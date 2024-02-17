@@ -1,0 +1,7 @@
+<div class="container">
+  <h2>Add Product Form</h2>
+  <div *ngIf="isAdded" class="alert alert-success" role="alert">
+    Added the product successfully
+  </div>
+  <app-new-product (addProduct)="onAddProduct($event)" [resetInput]="isAdded" ></app-new-product>
+</div>

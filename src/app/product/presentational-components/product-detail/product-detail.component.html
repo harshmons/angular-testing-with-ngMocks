@@ -1,0 +1,18 @@
+
+  <div *ngIf="detail" class="card">
+    <div class="card-header">Product Details</div>
+    <img
+      [src]="detail.image"
+      class="card-img-top"
+      [alt]="detail.title"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ detail.title }}</h5>
+      <p class="card-text">
+        {{ detail.category }}
+      </p>
+      <p class="card-text">
+        {{ detail.description }}
+      </p>
+    </div>
+  </div>

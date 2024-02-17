@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon>shopping_bag</mat-icon>
+  </button>
+  <span>Shoppy</span>
+  <span class="spacer"></span>
+  <!-- <app-navigation-list [count]="count$ | async"></app-navigation-list> -->
+  <div class="nav-wrapper">
+    <div class="nav-menu-list">
+      <a mat-button routerLink="/">Home</a>
+      <a mat-button routerLink="/cart">Cart</a>
+      <a mat-button routerLink="/products/add-new-product">Add New Product</a>
+    </div>
+    <div class="cart-wrapper">
+      <mat-icon [matBadge]="count$ | async" matBadgeColor="warn">shopping_cart</mat-icon>
+    </div>
+  </div>
+  
+</mat-toolbar>

@@ -1,0 +1,23 @@
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+
+.nav-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-menu-list {
+  display: flex;
+}
+.nav-menu-list > a {
+  margin: 0 10px;
+}
+.cart-wrapper {
+  margin-right: 20px;
+}
