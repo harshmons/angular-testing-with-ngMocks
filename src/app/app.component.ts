@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-testing-with-ngMocks';
+  title = 'Angular-testing-with-ng-mocks';
 }
