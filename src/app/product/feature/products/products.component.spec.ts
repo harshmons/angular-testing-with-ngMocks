@@ -1,22 +1,42 @@
-import { ProductsComponent } from './../../components/products/products.component';
-import { HomeComponent } from './home.component';
+import { ProductsComponent } from './products.component';
 import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
-import { AppModule } from '../../app.module';
+import { AppModule } from '../../../app.module';
+import { ProductService } from '../../../core/services/product/product.service';
+import {mockProducts,mockProduct} from "../../../mocks"
+import { of, EMPTY } from 'rxjs';
+import { ShoppingCartService } from '../../../core/services/shopping-cart/shopping-cart.service';
+import { cold } from 'jest-marbles';
 
-describe('Home Component', () => {
-  beforeEach(() => {
-    return MockBuilder(HomeComponent, AppModule)
-  })
+describe('ProductsComponent', () => {
+  beforeEach(() =>
+    MockBuilder(ProductsComponent, AppModule)
+      .mock(ProductService, {
+        getAllProducts: () => of(mockProducts),
+      })
+      .mock(ShoppingCartService, {
+        addToCart: () => EMPTY,
+      })
+  );
 
-  it('should be defined', () => {
-    const fixture = MockRender(HomeComponent);
-    expect(fixture.componentInstance).toBeDefined();
-  })
+  it('should render the component', () => {
+    const fixture = MockRender(ProductsComponent);
+    expect(fixture).toBeDefined();
+  });
 
-  it('should render the products component', () => {
-    const fixture = MockRender(HomeComponent);
-    const productsEl = ngMocks.find(ProductsComponent);
-    fixture.detectChanges();
-    expect(productsEl).toBeDefined();
-  })
-})
+  it('should have the products from service onInit', () => {
+    const fixture = MockRender(ProductsComponent);
+    const component = fixture.componentInstance;
+    const expected$ = cold('(a|)', { a: mockProducts });
+    expect(component.products$).toBeObservable(expected$);
+  });
+
+  it('should trigger service method on handleAddToCart', () => {
+    const fixture = MockRender(ProductsComponent);
+    const component = fixture.componentInstance;
+    const shopService = ngMocks.findInstance(ShoppingCartService);
+    const spy = jest.spyOn(shopService, 'addToCart');
+    component.handleAddToCart(mockProduct);
+    expect(spy).toHaveBeenCalled();
+  });
+
+});

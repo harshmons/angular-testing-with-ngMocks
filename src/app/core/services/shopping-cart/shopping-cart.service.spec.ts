@@ -1,8 +1,8 @@
 
-import { mockCart } from './../mocks/index';
-import { ShoppingCartService } from '../services/shopping-cart.service';
+import { mockCart } from '../../../mocks';
+import { ShoppingCartService } from './shopping-cart.service';
 import { MockBuilder, ngMocks } from 'ng-mocks';
-import { AppModule } from '../app.module';
+import { AppModule } from '../../../app.module';
 import { cold } from 'jest-marbles';
 
 describe('Shopping Cart service', () => {

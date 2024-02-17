@@ -1,7 +1,7 @@
 import { AppModule } from './../../app.module';
 import { NavbarComponent } from './navbar.component';
 import { MockBuilder, MockRender } from 'ng-mocks';
-import { ShoppingCartService } from '../../services/shopping-cart.service';
+import { ShoppingCartService } from '../../core/services/shopping-cart/shopping-cart.service';
 import { of } from 'rxjs';
 import { cold } from 'jest-marbles';
 

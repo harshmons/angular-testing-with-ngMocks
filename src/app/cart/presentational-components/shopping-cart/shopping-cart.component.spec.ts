@@ -1,6 +1,6 @@
 import { ShoppingCartComponent } from './shopping-cart.component';
 import { MockBuilder, MockRender } from 'ng-mocks';
-import { mockCart } from '../../mocks';
+import { mockCart } from '../../../mocks';
 
 describe('ShoppingCart', () => {
   beforeEach(() => {

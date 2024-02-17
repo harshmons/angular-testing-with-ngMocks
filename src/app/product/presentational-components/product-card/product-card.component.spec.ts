@@ -1,19 +1,19 @@
 import { MockBuilder, MockedComponentFixture, MockRender, ngMocks } from 'ng-mocks';
-import { ProductComponent } from './product.component';
-import { mockProduct } from '../../mocks';
-import { AppModule } from '../../app.module';
-import { Product } from '../../models/product.model';
+import { ProductCardComponent } from './product-card.component';
+import { mockProduct } from '../../../mocks';
+import { AppModule } from '../../../app.module';
+import { Product } from '../../../core/interfaces';
 
-describe('ProductComponent', () => {
-  let fixture: MockedComponentFixture<ProductComponent, {
+describe('ProductCardComponent', () => {
+  let fixture: MockedComponentFixture<ProductCardComponent, {
     product: Product,
     onAddToCart: () => {}
   }>;
   ngMocks.faster();
 
-  beforeAll(() => MockBuilder(ProductComponent, AppModule));
+  beforeAll(() => MockBuilder(ProductCardComponent, AppModule));
   beforeAll(() => {
-    fixture = MockRender(ProductComponent, {
+    fixture = MockRender(ProductCardComponent, {
       product: mockProduct,
       onAddToCart: jest.fn(),
     })

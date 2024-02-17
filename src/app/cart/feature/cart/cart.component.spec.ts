@@ -1,8 +1,9 @@
-import { mockShoppingCart } from './../../mocks/index';
-import { ShoppingCartService } from '../../services/shopping-cart.service';
+import { mockShoppingCart } from '../../../mocks';
+import { ShoppingCartService } from '../../../core/services/shopping-cart/shopping-cart.service';
 import { CartComponent } from './cart.component';
 import { MockBuilder, MockRender } from 'ng-mocks';
-import { AppModule } from '../../app.module';
+import { AppModule } from '../../../app.module';
+
 
 describe('Cart Component', () => {
   beforeEach(() => {

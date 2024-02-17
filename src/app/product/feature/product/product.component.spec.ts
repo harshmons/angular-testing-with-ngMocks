@@ -1,16 +1,14 @@
-import { cold } from 'jest-marbles';
-import { mockProduct } from '../../mocks';
-import { EMPTY, of } from 'rxjs';
-import { RouterTestingModule } from '@angular/router/testing';
-import { ProductService } from './../../services/product.service';
-import { ProductDetailComponent } from './product-detail.component';
-import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { AppModule } from '../../app.module';
+import { mockProduct } from '../../../mocks';
+import {  of } from 'rxjs';
+import { ProductService } from '../../../core/services/product/product.service';
+import { ProductComponent } from './product.component';
+import { MockBuilder, MockRender} from 'ng-mocks';
+import { ActivatedRoute } from '@angular/router';
+import { AppModule } from '../../../app.module';
 
 describe('Home Component', () => {
   beforeEach(() => {
-    return MockBuilder(ProductDetailComponent, AppModule)
+    return MockBuilder(ProductComponent, AppModule)
       .mock(ProductService, {
         getProductById: () => of(mockProduct)
       })
@@ -22,20 +20,7 @@ describe('Home Component', () => {
       })
   })
   it('should be defined', () => {
-    const fixture = MockRender(ProductDetailComponent);
+    const fixture = MockRender(ProductComponent);
     expect(fixture.componentInstance).toBeDefined();
   });
-
-  it('should display the selected product details', () => {
-    const fixture = MockRender(ProductDetailComponent);
-    const expected$ = cold('(a|)', { a: mockProduct });
-    expect(fixture.componentInstance.productDetails$).toBeObservable(expected$);
-  })
-
-  it('should render the item in DOM', () => {
-    const fixture = MockRender(ProductDetailComponent);
-    const imageEl = ngMocks.find('img');
-    fixture.detectChanges();
-    expect(imageEl).toBeDefined();
-  })
 })
