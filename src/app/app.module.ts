@@ -5,14 +5,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { PhonePipe } from './pipes/phone.pipe';
 import { FeatureModule as ProductFeature } from './product/feature/feature.module';
 import { FeatureModule as CartFeature } from './cart/feature/feature.module';
 import { LayoutModule } from './layout/layout.module';
 @NgModule({
   declarations: [
     AppComponent,
-    PhonePipe,
   ],
   imports: [
     BrowserModule,
