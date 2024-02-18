@@ -1,7 +1,7 @@
 import { createReducer, createSelector, on } from '@ngrx/store';
 
 import { addToCart } from '../actions/shopping-cart.actions';
-import { Cart } from '../../interfaces/';
+import { Cart } from '../../models';
 
 export interface ShoppingCartState{
     items:Array<Cart>

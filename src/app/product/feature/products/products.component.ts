@@ -1,4 +1,4 @@
-import { Cart,Product } from '../../../core/interfaces';
+import { Cart,Product } from '../../../core/models';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';

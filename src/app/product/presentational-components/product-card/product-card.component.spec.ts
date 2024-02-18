@@ -2,7 +2,7 @@ import { MockBuilder, MockedComponentFixture, MockRender, ngMocks } from 'ng-moc
 import { ProductCardComponent } from './product-card.component';
 import { mockProduct } from '../../../mocks';
 import { AppModule } from '../../../app.module';
-import { Product } from '../../../core/interfaces';
+import { Product } from '../../../core/models';
 
 describe('ProductCardComponent', () => {
   let fixture: MockedComponentFixture<ProductCardComponent, {

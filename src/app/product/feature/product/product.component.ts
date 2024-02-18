@@ -1,4 +1,4 @@
-import { Product } from '../../../core/interfaces';
+import { Product } from '../../../core/models';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';

@@ -1,4 +1,4 @@
-import { Product } from '../../../core/interfaces';
+import { Product } from '../../../core/models';
 import { Component, Input } from '@angular/core';
 
 @Component({

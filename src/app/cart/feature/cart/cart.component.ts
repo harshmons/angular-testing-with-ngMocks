@@ -1,4 +1,4 @@
-import { Cart } from '../../../core/interfaces';
+import { Cart } from '../../../core/models';
 import { Component, OnInit } from '@angular/core';
 import {Store} from "@ngrx/store";
 import { ShoppingCartState, selectCartItems } from 'src/app/core/store/reducers/shopping-cart.reducer';

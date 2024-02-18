@@ -5,7 +5,7 @@
       <p class="card-title">
         {{ product.title }}
       </p>
-      <p><strong>Price:</strong> {{ product.price }}</p>
+      <p><strong>Price:</strong> {{ product.price | roundOffPrice }}</p>
       <div>
         <mat-chip-list aria-label="Category selection">
           <mat-chip> {{ product.category }}</mat-chip>
