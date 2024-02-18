@@ -4,6 +4,7 @@ import { FeatureRoutingModule } from "./feature.routing.module";
 import { CommonModule } from "@angular/common";
 import { ShoppingCartComponent } from "../presentational-components/shopping-cart/shopping-cart.component";
 import { CartComponent } from "./cart/cart.component";
+import { SharedModule } from "src/app/shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { CartComponent } from "./cart/cart.component";
   imports: [
     FeatureRoutingModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: []
