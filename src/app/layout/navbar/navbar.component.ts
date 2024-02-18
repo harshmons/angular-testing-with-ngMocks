@@ -1,6 +1,7 @@
-import { ShoppingCartService } from '../../core/services/shopping-cart/shopping-cart.service';
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { ShoppingCartState, selectCartCount } from 'src/app/core/store/reducers/shopping-cart.reducer';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +11,10 @@ import { Observable } from 'rxjs';
 export class NavbarComponent implements OnInit {
 
   count$: Observable<number>;
-  constructor(private cartService: ShoppingCartService) { }
+  constructor( private store:Store<{cart:ShoppingCartState}>) { }
 
   ngOnInit() {
-    this.count$ = this.cartService.getCartCount$()
+    this.count$ = this.store.select(selectCartCount)
   }
 
 }

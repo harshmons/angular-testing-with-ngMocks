@@ -1,8 +1,10 @@
 import { Cart,Product } from '../../../core/interfaces';
-import { ShoppingCartService } from '../../../core/services/shopping-cart/shopping-cart.service';
 import { Observable } from 'rxjs';
-import { ProductService } from '../../../core/services/product/product.service';
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import {getProductList} from "../../../core/store/actions/products.actions"
+import { selectProductList } from 'src/app/core/store/reducers/products.reducer';
+import { addToCart } from 'src/app/core/store/actions/shopping-cart.actions';
 
 @Component({
   selector: 'app-products',
@@ -12,11 +14,14 @@ import { Component, OnInit } from '@angular/core';
 export class ProductsComponent implements OnInit {
 
   products$!: Observable<Product[]>;
-  constructor(private productService: ProductService,
-    private shoppingCartService: ShoppingCartService) { }
+  constructor(
+    private store:Store<{products:Product[]}>
+    ) { }
 
   ngOnInit() {
-    this.products$ = this.productService.getAllProducts();
+    
+    this.store.dispatch(getProductList())
+    this.products$ = this.store.select(selectProductList)
   }
 
   handleAddToCart(product: Product) {
@@ -27,7 +32,7 @@ export class ProductsComponent implements OnInit {
       title: product.title,
       price: product.price
     }
-    this.shoppingCartService.addToCart(cartItem);
+    this.store.dispatch(addToCart({item:cartItem}))
   }
 
 }

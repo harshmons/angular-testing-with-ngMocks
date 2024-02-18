@@ -1,7 +1,8 @@
-import { ShoppingCartService } from '../../../core/services/shopping-cart/shopping-cart.service';
 import { Cart } from '../../../core/interfaces';
 import { Component, OnInit } from '@angular/core';
-
+import {Store} from "@ngrx/store";
+import { ShoppingCartState, selectCartItems } from 'src/app/core/store/reducers/shopping-cart.reducer';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -9,11 +10,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  cartItems: Cart[] = [];
-  constructor(private shoppingCartService: ShoppingCartService) { }
+  cartItems$: Observable<Array<Cart>>;
+  constructor(
+    private store:Store<{cart:ShoppingCartState}>
+    ) { }
 
   ngOnInit() {
-    this.cartItems = this.shoppingCartService.getAllCartItems();
+    this.cartItems$ = this.store.select(selectCartItems)
   }
 
 }

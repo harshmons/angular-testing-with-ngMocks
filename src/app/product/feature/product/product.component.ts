@@ -1,8 +1,10 @@
-import { ProductService } from '../../../core/services/product/product.service';
 import { Product } from '../../../core/interfaces';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
+import { Store } from '@ngrx/store';
+import {getProduct} from "../../../core/store/actions/products.actions";
+import { selectSelectedProduct } from 'src/app/core/store/reducers/products.reducer';
 
 @Component({
   selector: 'app-product',
@@ -12,11 +14,14 @@ import { Observable } from 'rxjs/internal/Observable';
 export class ProductComponent implements OnInit {
   productDetails$: Observable<Product>;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService) { }
+  constructor(private route: ActivatedRoute,
+    private store:Store
+    ) { }
 
   ngOnInit() {
-    const routeId = this.route.snapshot.params['id'];
-    this.productDetails$ = this.productService.getProductById(routeId);
+    const routeId:number = this.route.snapshot.params['id'];
+    this.store.dispatch(getProduct({id:routeId}));
+    this.productDetails$ = this.store.select(selectSelectedProduct)
   }
 
 }
