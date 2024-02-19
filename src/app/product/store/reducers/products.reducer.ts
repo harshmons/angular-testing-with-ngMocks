@@ -1,7 +1,7 @@
 import { createReducer, createSelector, on } from '@ngrx/store';
 
 import { getProductListSuccess, getProductSuccess } from '../actions/products.actions';
-import { Product } from '../../models';
+import { Product } from 'src/app/core/models';
 
 export interface ProductsState{
     products:Array<Product>

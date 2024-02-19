@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { Store } from '@ngrx/store';
-import {getProduct} from "../../../core/store/actions/products.actions";
-import { selectSelectedProduct } from 'src/app/core/store/reducers/products.reducer';
+import { getProduct } from '../../store/actions/products.actions';
+import { selectSelectedProduct } from '../../store/reducers/products.reducer';
 
 @Component({
   selector: 'app-product',

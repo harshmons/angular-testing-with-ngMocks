@@ -2,9 +2,9 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from '@angular/forms';
 import { FeatureRoutingModule } from "./feature.routing.module";
 import { CommonModule } from "@angular/common";
-import { ShoppingCartComponent } from "../presentational-components/shopping-cart/shopping-cart.component";
+import { ShoppingCartComponent } from "../components/shopping-cart/shopping-cart.component";
 import { CartComponent } from "./cart/cart.component";
-import { SharedModule } from "src/app/shared/shared.module";
+import { SharedModule } from "../../shared/shared.module";
 
 @NgModule({
   declarations: [

@@ -1,8 +1,8 @@
 import { Cart } from '../../../core/models';
 import { Component, OnInit } from '@angular/core';
 import {Store} from "@ngrx/store";
-import { ShoppingCartState, selectCartItems } from 'src/app/core/store/reducers/shopping-cart.reducer';
 import { Observable } from 'rxjs';
+import { ShoppingCartState, selectCartItems } from '../../store/reducers/shopping-cart.reducer';
 
 @Component({
   selector: 'app-cart',

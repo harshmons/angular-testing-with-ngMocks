@@ -12,9 +12,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import {productsReducer} from "./core/store/reducers/products.reducer";
-import { ProductsEffects } from './core/store/effects/products.effects';
-import { shoppingCartReducer } from './core/store/reducers/shopping-cart.reducer';
+import { productsReducer,ProductsEffects } from './product/store';
+import { shoppingCartReducer } from './cart/store';
 @NgModule({
   declarations: [
     AppComponent,
