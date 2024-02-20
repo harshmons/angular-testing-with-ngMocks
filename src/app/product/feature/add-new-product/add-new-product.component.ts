@@ -1,5 +1,5 @@
-import { ProductService } from '../../../core/services/product/product.service';
 import { Component} from '@angular/core';
+import { ProductService } from '../../../core/services/product/product.service';
 
 @Component({
   selector: 'app-add-new-product',

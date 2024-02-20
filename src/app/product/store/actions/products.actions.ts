@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Product } from 'src/app/core/models';
+import { Product } from '../../../core/models';
  
 export const getProductList = createAction(
     '[Products] Retrieve Product List'

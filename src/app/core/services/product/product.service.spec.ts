@@ -1,13 +1,13 @@
-import { AppModule } from './../../../app.module';
-import { MockBuilder, ngMocks } from 'ng-mocks';
-import { ProductService } from './product.service';
 import { HttpClientModule } from '@angular/common/http';
 import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
-import { mockProducts, mockProduct } from '../../../mocks';
 import { EMPTY } from 'rxjs';
+import { MockBuilder, ngMocks } from 'ng-mocks';
+import { AppModule } from './../../../app.module';
+import { ProductService } from './product.service';
+import { mockProducts, mockProduct } from '../../../mocks';
 
 describe('product Service', () => {
   beforeEach(() => {

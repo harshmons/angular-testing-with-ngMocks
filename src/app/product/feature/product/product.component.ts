@@ -1,8 +1,8 @@
-import { Product } from '../../../core/models';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { Store } from '@ngrx/store';
+import { Product } from '../../../core/models';
 import { getProduct } from '../../store/actions/products.actions';
 import { selectSelectedProduct } from '../../store/reducers/products.reducer';
 

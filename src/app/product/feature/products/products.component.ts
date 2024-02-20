@@ -1,10 +1,10 @@
-import { Cart,Product } from '../../../core/models';
-import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Cart,Product } from '../../../core/models';
+import { addToCart } from '../../../cart/store';
 import { getProductList } from '../../store/actions/products.actions';
 import { selectProductList } from '../../store/reducers/products.reducer';
-import { addToCart } from '../../../cart/store';
 
 @Component({
   selector: 'app-products',
