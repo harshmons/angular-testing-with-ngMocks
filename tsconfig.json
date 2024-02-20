@@ -1,34 +1,21 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-  "compileOnSave": false,
+  "extends": "./tsconfig.main.json",
   "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "sourceMap": true,
-    "declaration": false,
-    "strictPropertyInitialization": false,
-    "downlevelIteration": true,
-    "strictNullChecks": false,
-    "experimentalDecorators": true,
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "target": "es2017",
-    "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ]
+    "outDir": "./out-tsc/app",
+    "types": [],
+    "paths": {
+      "@core/*":["src/app/core/*"],
+      "@product/*":["src/app/product/*"],
+      "@cart/*":["src/app/cart/*"],
+      "@shared/*":["src/app/shared/*"]
+    } 
   },
-  "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true
-  }
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ]
 }

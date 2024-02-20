@@ -1,16 +1,16 @@
-import { PhonePipe } from './phone.pipe';
+import { RoundOffPricePipe } from './round-off-price.pipe';
 import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
 
 describe('Phone Pipe', () => {
   beforeEach(() => {
-    return MockBuilder(PhonePipe).provide(PhonePipe)
+    return MockBuilder(RoundOffPricePipe).provide(RoundOffPricePipe)
   })
   it('should be defined', () => {
-    const fixture = MockRender(PhonePipe);
+    const fixture = MockRender(RoundOffPricePipe);
     expect(fixture.componentInstance).toBeDefined();
   })
   it('should test the transform value', () => {
-    const fixture = MockRender('<p>{{ "4161234567" | phone }}</p>');
-    expect(ngMocks.formatText(fixture)).toBe('+1(416)-123-4567');
+    const fixture = MockRender('<p>{{ 1.4 | roundOffPrice }}</p>');
+    expect(ngMocks.formatText(fixture)).toBe('1 $');
   })
 })

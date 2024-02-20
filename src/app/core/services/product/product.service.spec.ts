@@ -33,7 +33,7 @@ describe('product Service', () => {
     const service = ngMocks.findInstance(ProductService);
     const httpMock = ngMocks.findInstance(HttpTestingController);
     let actual: any;
-    service.getProductById('1').subscribe((value) => (actual = value));
+    service.getProductById(1).subscribe((value) => (actual = value));
 
     const req = httpMock.expectOne('https://fakestoreapi.com/products/1');
     expect(req.request.method).toEqual('GET');

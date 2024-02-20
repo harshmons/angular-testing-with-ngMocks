@@ -1,5 +1,5 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.main.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
     "types": [
@@ -7,7 +7,13 @@
     ],
     "module": "commonjs",
     "emitDecoratorMetadata": true,
-    "allowJs": true
+    "allowJs": true,
+    "paths": {
+      "@core/*":["src/app/core/*"],
+      "@product/*":["src/app/product/*"],
+      "@cart/*":["src/app/cart/*"],
+      "@shared/*":["src/app/shared/*"]
+    } 
   },
   "files": [
     "src/polyfills.ts"
