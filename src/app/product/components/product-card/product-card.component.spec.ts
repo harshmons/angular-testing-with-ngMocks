@@ -1,33 +1,18 @@
-import { MockBuilder, MockedComponentFixture, MockRender, ngMocks } from 'ng-mocks';
+import { MockBuilder, MockedComponentFixture, MockRender, NG_MOCKS_ROOT_PROVIDERS, ngMocks } from 'ng-mocks';
 import { ProductCardComponent } from './product-card.component';
 import { mockProduct } from '../../../mocks';
 import { AppModule } from '../../../app.module';
 import { Product } from '../../../core/models';
 import { FeatureModule } from '../../feature/feature.module';
 import { RoundOffPricePipe } from '../../../shared/pipes/round-off-price.pipe';
-import { RouterModule } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('Component : ProductCardComponent', () => {
-  // let fixture: MockedComponentFixture<ProductCardComponent, {
-  //   product: Product,
-  //   onAddToCart: () => {}
-  // }>;
-  // ngMocks.faster();
 
   beforeEach(() => {
-    return MockBuilder(ProductCardComponent, FeatureModule).
-    mock(RoundOffPricePipe,(val)=>val)
-    // .replace(RouterModule,RouterTestingModule)
+    return MockBuilder(ProductCardComponent,FeatureModule).mock(RoundOffPricePipe,(val)=>val).keep(RouterLink)
   })
-
-  // beforeAll(() => MockBuilder(ProductCardComponent, AppModule));
-  // beforeAll(() => {
-  //   fixture = MockRender(ProductCardComponent, {
-  //     product: mockProduct,
-  //     onAddToCart: jest.fn(),
-  //   })
-  // });
 
   it('should be defined', () => {
     // ACT
@@ -58,24 +43,28 @@ describe('Component : ProductCardComponent', () => {
     expect(ngMocks.formatText(priceEl)).toMatch(mockProduct.price.toString());
   })
 
-  // it('should map the correct route', () => {
-  //   // ARRANGE
-  //   const fixture = MockRender(ProductCardComponent,{
-  //     product:mockProduct
-  //   });
-  //   fixture.detectChanges()
-  //   const location: Location = fixture.point.injector.get(Location);
+  it('should map the correct route', () => {
+    // NOTE - This test can be avoided because the way we have asserted is not the correct way.
+    // Correct way would be - 
+    // 1. Create a host component which will have all the router related stuff like router-outlet,etc 
+    // 2. Use router testing module to mock the stuff
+    // 3. Assert on may correct route change based on the triggering a click event on anchor tag
+    
+    // So in order to test small stuff we have to do all those setups, which can be avoided as trade off and anyways ideally these can be taken care by automation suite also
+    // Secondly, We mostly use the methods to change the route using router serivice from class methods 
+    
+    // ARRANGE
+    const fixture = MockRender(ProductCardComponent,{
+      product:mockProduct
+    });
+    fixture.detectChanges();
 
-  //   // ACT
-  //   const moreDetailsEl = ngMocks.find('[data-testid="product-more-details"]');
+    // ACT
+    const moreDetailsEl = ngMocks.find('[data-testid="product-more-details"]');
     
-  //   ngMocks.trigger(moreDetailsEl,'click')
-  //   fixture.detectChanges();
-    
-  //   // ASSERT
-  //   console.log("LOCATION ---->",location);
-  //   // expect(location.()).toEqual(mockProduct);
-  // });
+    // ASSERT
+    expect(moreDetailsEl.properties['outerHTML']).toMatch('products,'+mockProduct.id.toString());
+  });
 
   it('should emit product data on triggering click event on button ', () => {
     // ARRANGE

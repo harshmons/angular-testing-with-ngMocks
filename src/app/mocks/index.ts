@@ -3,7 +3,8 @@ export const mockProduct = {
   price: 1,
   description: 'a',
   category: 'electronics',
-  image: 'abc'
+  image: 'abc',
+  id:123
 }
 
 export const mockAddForm = {
