@@ -10,5 +10,5 @@ module.exports = {
   //   "^.+\\.[t|j]s?$": "babel-jest"
   // },
   preset: 'jest-preset-angular',
-  setupFilesAfterEnv: ['<rootDir>/setup-jest.ts']
+  setupFilesAfterEnv: ['<rootDir>/setupJest.ts']
 };

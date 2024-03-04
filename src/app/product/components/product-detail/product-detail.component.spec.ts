@@ -1,34 +1,48 @@
-import { cold } from 'jest-marbles';
-import { mockProduct } from '../../../mocks';
-import { of } from 'rxjs';
-import { ProductService } from '../../../core/services/product/product.service';
 import { ProductDetailComponent } from './product-detail.component';
 import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { AppModule } from '../../../app.module';
+import { FeatureModule } from '../../feature/feature.module';
+import { mockProduct } from '../../../mocks';
 
-describe('Home Component', () => {
+describe('Component : Home Component', () => {
   beforeEach(() => {
-    return MockBuilder(ProductDetailComponent, AppModule)
-      .mock(ProductService, {
-        getProductById: () => of(mockProduct)
-      })
-      .provide({
-        provide: ActivatedRoute,
-        useValue: {
-          snapshot: { params: { id: '1' } }
-        }
-      })
+    return MockBuilder(ProductDetailComponent, FeatureModule)
   })
   it('should be defined', () => {
+    // ACT
     const fixture = MockRender(ProductDetailComponent);
+    
+    // ASSERT
     expect(fixture.componentInstance).toBeDefined();
   });
 
-  // it('should render the item in DOM', () => {
-  //   const fixture = MockRender(ProductDetailComponent);
-  //   const imageEl = ngMocks.find('img');
-  //   fixture.detectChanges();
-  //   expect(imageEl).toBeDefined();
-  // })
+  it("should map the product properties in the DOM if input is given",()=>{
+    // ACT
+    const fixture = MockRender(ProductDetailComponent,{
+      detail:mockProduct
+    });
+    fixture.detectChanges()
+    
+    // ASSERT
+    const imageEl = ngMocks.find('[data-testid="product-image"][src="' + mockProduct.image + '"]');
+    expect(imageEl).toBeDefined();
+    
+    const titleEl = ngMocks.find('[data-testid="product-title"]');
+    expect(ngMocks.formatText(titleEl)).toMatch(mockProduct.title);
+    
+    const categoryEl = ngMocks.find('[data-testid="product-category"]');
+    expect(ngMocks.formatText(categoryEl)).toMatch(mockProduct.category);
+
+    const descriptionEl = ngMocks.find('[data-testid="product-description"]');
+    expect(ngMocks.formatText(descriptionEl)).toMatch(mockProduct.description);
+  })
+
+  it("should map the product properties in the DOM if input is not given",()=>{
+    // ACT
+    const fixture = MockRender(ProductDetailComponent);
+    fixture.detectChanges()
+    
+    // ASSERT
+    const emptyEl = ngMocks.formatText(fixture);
+    expect(emptyEl).toBe('');
+  })
 })

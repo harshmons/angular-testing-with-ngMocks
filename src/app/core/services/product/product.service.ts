@@ -11,15 +11,15 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getAllProducts(): Observable<any> {
-    return this.http.get<Product[]>('https://fakestoreapi.com/products')
+    return this.http.get<Product[]>('/products')
   }
 
   getProductById(id: number): Observable<any> {
-    return this.http.get<Product[]>(`https://fakestoreapi.com/products/${id}`)
+    return this.http.get<Product[]>(`/products/${id}`)
   }
 
   addProductToDB(product: any): Observable<any> {
-    return this.http.post('https://fakestoreapi.com/products', product)
+    return this.http.post('/products', product)
   }
 
 }
