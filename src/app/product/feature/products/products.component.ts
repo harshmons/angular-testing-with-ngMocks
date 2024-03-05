@@ -5,6 +5,7 @@ import { Cart,Product } from '../../../core/models';
 import { addToCart } from '../../../cart/store';
 import { getProductList } from '../../store/actions/products.actions';
 import { selectProductList } from '../../store/reducers/products.reducer';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-products',

@@ -21,14 +21,16 @@ export const mockProducts = [
     price: 1,
     description: 'a',
     category: 'electronics',
-    image: 'abc'
+    image: 'abc',
+    id:1
   },
   {
     title: 'bcs',
     price: 2,
     description: 'ca',
     category: 'jewelery',
-    image: 'ccd'
+    image: 'ccd',
+    id:2
   }
 ]
 

@@ -19,14 +19,14 @@
   <mat-form-field appearance="fill">
     <mat-label>Select Category</mat-label>
     <mat-select data-testid="categoryControl" name="category" ngModel>
-      <mat-option value="electronics">Electronics</mat-option>
-      <mat-option value="jewelery">Jewelery</mat-option>
-      <mat-option value="men's clothing">Men's clothing</mat-option>
-      <mat-option value="women's clothing">Women's clothin</mat-option>
+      <mat-option data-testid="categoryControlValue1" value="electronics">Electronics</mat-option>
+      <mat-option data-testid="categoryControlValue2" value="jewelery">Jewelery</mat-option>
+      <mat-option data-testid="categoryControlValue3" value="men's clothing">Men's clothing</mat-option>
+      <mat-option data-testid="categoryControlValue4description" value="women's clothing">Women's clothin</mat-option>
     </mat-select>
   </mat-form-field>
   <div class="submit-btn">
-    <button type="submit" mat-raised-button color="primary">Submit</button>
+    <button type="submit" mat-raised-button color="primary" data-testid="submit-button">Submit</button>
   </div>
 </form>
 

@@ -1,10 +1,11 @@
 import { ShoppingCartComponent } from './shopping-cart.component';
-import { MockBuilder, MockRender } from 'ng-mocks';
+import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
 import { mockCart } from '../../../mocks';
+import { FeatureModule } from '../../feature/feature.module';
 
 describe('Component: ShoppingCart', () => {
   beforeEach(() => {
-    return MockBuilder(ShoppingCartComponent)
+    return MockBuilder(ShoppingCartComponent,FeatureModule)
   })
   it('should be defined', () => {
     //ACT
@@ -14,5 +15,28 @@ describe('Component: ShoppingCart', () => {
 
     // ASSERT
     expect(fixture.point.componentInstance.item).toBe(mockCart);
+  })
+
+  it("should map the cart item properties in the DOM if input is given",()=>{
+    // ACT
+    const fixture = MockRender(ShoppingCartComponent,{
+      item:mockCart
+    });
+    fixture.detectChanges()
+    
+    // ASSERT
+    const imageEl = ngMocks.find('[data-testid="product-image"][src="' + mockCart.image + '"]');
+    expect(imageEl).toBeDefined();
+    
+    const titleEl = ngMocks.find('[data-testid="product-title"]');
+    expect(ngMocks.formatText(titleEl)).toMatch(mockCart.title);
+    
+    const productCategoryPriceEl = ngMocks.find('[data-testid="product-category-price"]');
+    expect(ngMocks.formatText(productCategoryPriceEl)).toMatch(mockCart.category);
+    expect(ngMocks.formatText(productCategoryPriceEl)).toMatch(mockCart.price.toString());
+
+    const productQuantityEl = ngMocks.find('[data-testid="product-quantity"]');
+    expect(ngMocks.formatText(productQuantityEl)).toMatch(mockCart.quantity.toString());
+
   })
 })
