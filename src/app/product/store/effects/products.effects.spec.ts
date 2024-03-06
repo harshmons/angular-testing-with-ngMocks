@@ -52,7 +52,7 @@ describe("Effect : Product",()=>{
         expect(effects.loadProducts$).toBeObservable(expected)
     })
 
-    it.only("should do the side effect for retrieving single product",()=>{
+    it("should do the side effect for retrieving single product",()=>{
         const effects = ngMocks.findInstance(ProductsEffects);
         const productService = ngMocks.findInstance(ProductService);
         const expected = cold('--a',{

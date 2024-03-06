@@ -10,9 +10,9 @@
   <span class="spacer"></span>
   <div class="nav-wrapper">
     <div class="nav-menu-list">
-      <a mat-button routerLink="/">Home</a>
-      <a mat-button routerLink="/cart">Cart</a>
-      <a mat-button routerLink="/products/add-new-product">Add New Product</a>
+      <a mat-button routerLink="/" data-testid="home-route">Home</a>
+      <a mat-button routerLink="/cart" data-testid="cart-route">Cart</a>
+      <a mat-button routerLink="/products/add-new-product" data-testid="add-new-product-route">Add New Product</a>
     </div>
     <div class="cart-wrapper">
       <mat-icon [matBadge]="count$ | async" matBadgeColor="warn">shopping_cart</mat-icon>

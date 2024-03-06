@@ -1,5 +1,5 @@
-import { FooterComponent } from '../footer/footer.component';
 import { MockBuilder, MockRender } from 'ng-mocks';
+import { FooterComponent } from '../footer/footer.component';
 
 describe('Footer Component', () => {
   beforeEach(() => {
