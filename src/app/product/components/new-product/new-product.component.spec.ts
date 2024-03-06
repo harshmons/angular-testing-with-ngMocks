@@ -1,27 +1,15 @@
-import { mockForm } from '../../../mocks';
-import { EMPTY, Subject } from 'rxjs';
-import { ProductService } from '../../../core/services/product/product.service';
+import { Subject } from 'rxjs';
 import { NewProductComponent } from './new-product.component';
 import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
-import { FormsModule, NgModel,NgForm } from "@angular/forms";
-import { MatInput, MatInputModule } from "@angular/material/input";
+import { FormsModule, NgModel } from "@angular/forms";
+import { MatInput } from "@angular/material/input";
 import { FeatureModule } from '../../feature/feature.module';
-import { MatSelect, MatSelectModule } from '@angular/material/select';
-import { MatOption, MatOptionModule, MatOptionSelectionChange } from '@angular/material/core';
-import { SharedModule } from '../../../shared/shared.module';
-import { Component } from '@angular/core';
 
 describe('NewProductComponent', () => {
-  let addProductToDB$: Subject<any>;
+  
   beforeEach(() => MockBuilder(NewProductComponent, FeatureModule)
     .keep(FormsModule)
     .keep(MatInput)
-    // .keep(MatSelect)
-    // .keep(MatOption)
-    // .mock(MatOptionModule)
-    // .mock(MatSelectModule)
-    // .keep(SharedModule)
-    // .keep(MatOption)
   );
 
 
@@ -93,24 +81,24 @@ describe('NewProductComponent', () => {
   });
 
   it.skip('should update the form value on chainging the Category', () => {
+    // NOTE - Below code doesn't work same way as mat-input testing block works,because
+    // 1. Angular material uses animation and mat-select works on that
+    // 2. Angular material team suggest to use Harness but that is more towards integration testing
+    // So, better would to test this in 2 parts, which again not gives the complete confidence from end user prespective, as we are not testing the binding of Mat Select with template form object 
+    // a. Test the rendered HTML with correct options
+    // b. Test the submit method, calls the follow-up method with form values  
+    
     // ARRANGE
     const fixture = MockRender(NewProductComponent);
     const component = fixture.point.componentInstance;
-    const categoryControlValueEl = ngMocks.find(['data-testid', 'categoryControlValue1']);
+    const electronicsCategoryControlValueEl = ngMocks.find(['data-testid', 'categoryControlValue1']);
     
     // ACT
-    console.log(">>>>>>>>>>",categoryControlValueEl.attributes)
-    ngMocks.trigger(categoryControlValueEl,'click')
+    ngMocks.trigger(electronicsCategoryControlValueEl,'click')
     fixture.detectChanges();
-    fixture.whenStable().then(()=>{
-      console.log("FORM VALUE FROM THEN---",component.addForm.value);
-    })
-    // categoryControlValueEl.nativeElement.selectOption(select, 'electronics');
-    // ngMocks.trigger(categoryControlValueEl, 'click');
-    // console.log("REVAL",ngMocks.reveal(MatOption))
-    // console.log("FORM VALUE ---",component.addForm.value);
-    // // ASSERT
-    // expect(component.addForm.value.category).toBe('electronics')
+    
+    // ASSERT
+    expect(component.addForm.value.category).toBe('electronics')
   });
 
   it("Should emit the changed data after clicking the submit button",async ()=>{
