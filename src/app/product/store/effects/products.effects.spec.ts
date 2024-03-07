@@ -1,12 +1,11 @@
-import { MockBuilder, MockRender, ngMocks } from "ng-mocks";
-import {ProductsEffects} from "./products.effects";
+import { Action } from "@ngrx/store";
+import { provideMockActions } from '@ngrx/effects/testing';
+import { MockBuilder, ngMocks } from "ng-mocks";
+import { Observable } from "rxjs";
+import {cold, hot} from "jest-marbles";
 import { ProductService } from '../../../core/services/product/product.service';
 import { mockProduct, mockProducts } from "../../../mocks";
-import { Observable, of } from "rxjs";
-import {cold, hot} from "jest-marbles";
-import { provideMockActions } from '@ngrx/effects/testing';
-import { Action } from "@ngrx/store";
-import { fakeAsync, flush, tick } from "@angular/core/testing";
+import {ProductsEffects} from "./products.effects";
 
 describe("Effect : Product",()=>{
     let actions$ = new Observable<Action>();
@@ -22,6 +21,7 @@ describe("Effect : Product",()=>{
         }).provide(provideMockActions(() => actions$))
       })
     it("should do the side effect for retrieving product list",()=>{
+        // ARRANGE
         const effects = ngMocks.findInstance(ProductsEffects);
         const expected = hot('--a',{
             a:{
@@ -31,11 +31,14 @@ describe("Effect : Product",()=>{
         })
         actions$ = hot('-a', {
             a: { type: '[Products] Retrieve Product List' }
-          })
+        })
+
+        // ASSERT
         expect(effects.loadProducts$).toBeObservable(expected)
     })
 
     it("should do the side effect for error",()=>{
+        // ARRANGE
         const productService = ngMocks.findInstance(ProductService);
         const error = new Error("Sample Error");
         productService.getAllProducts = jest.fn().mockReturnValue(cold('-#',undefined,error))
@@ -48,11 +51,14 @@ describe("Effect : Product",()=>{
         })
         actions$ = hot('-a', {
             a: { type: '[Products] Retrieve Product List' } 
-          })
+        })
+        
+        // ASSERT
         expect(effects.loadProducts$).toBeObservable(expected)
     })
 
     it("should do the side effect for retrieving single product",()=>{
+        // ARRANGE
         const effects = ngMocks.findInstance(ProductsEffects);
         const productService = ngMocks.findInstance(ProductService);
         const expected = cold('--a',{
@@ -65,14 +71,15 @@ describe("Effect : Product",()=>{
             a: { type: '[Products] Retrieve Single Product',id:123 }
         })
         
+        // ASSERT
         expect(effects.loadProductById$).toBeObservable(expected);
         expect(effects.loadProductById$).toSatisfyOnFlush(() => {
             expect(productService.getProductById).toHaveBeenCalledWith(123);
         })
-        
     })
 
     it("should do the side effect for error",()=>{
+        // ARRANGE
         const productService = ngMocks.findInstance(ProductService);
         const error = new Error("Sample Error");
         productService.getProductById = jest.fn().mockReturnValue(cold('-#',undefined,error))
@@ -85,7 +92,9 @@ describe("Effect : Product",()=>{
         })
         actions$ = hot('-a', {
             a: { type: '[Products] Retrieve Single Product',id:123 } 
-          })
+        })
+        
+        // ASSERT
         expect(effects.loadProductById$).toBeObservable(expected)
     })
 })

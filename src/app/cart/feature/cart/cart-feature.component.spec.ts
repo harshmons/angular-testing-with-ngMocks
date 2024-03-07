@@ -7,8 +7,9 @@ import { selectCartItems } from '../../store/reducers/shopping-cart.reducer';
 import { CartFeatureModule } from '../cart-feature.module';
 import { CartFeatureComponent } from './cart-feature.component';
 
-describe('Container Component: Cart Component', () => {
+describe('Component : CartFeature', () => {
   let mockStore$ : Subject<any>;
+  
   beforeEach(() => {
     mockStore$ = new Subject();
   })
@@ -23,14 +24,14 @@ describe('Container Component: Cart Component', () => {
   })
 
   it('should be defined', () => {
-    // ACT
+    // ARRANGE
     const fixture = MockRender(CartFeatureComponent);
     
-    // ARRANGE
+    // ASSERT
     expect(fixture.componentInstance).toBeDefined();
   })
 
-  it('should use selector selectCartItems for getting the cart item stored in store', () => {
+  it('should use selector selectCartItems for getting the cart items stored in store', () => {
     // ARRANGE
     const fixture = MockRender(CartFeatureComponent);
     const storeService = fixture.point.injector.get(Store);
@@ -39,6 +40,7 @@ describe('Container Component: Cart Component', () => {
     mockStore$.next(mockShoppingCart);
 
     // ASSERT
+    expect(storeService.select).toHaveBeenCalledTimes(1);
     expect(storeService.select).toHaveBeenCalledWith(selectCartItems);
   })
 
@@ -49,13 +51,13 @@ describe('Container Component: Cart Component', () => {
     // ACT
     mockStore$.next(mockShoppingCart);
     fixture.detectChanges();
-    const instances = ngMocks.findInstances(fixture,ShoppingCartComponent); 
-    const emptyCartEl = ngMocks.find('[data-testid="empty-cart"]',null);
-
+    
     // ASSERT
+    const instances = ngMocks.findInstances(fixture,ShoppingCartComponent); 
     expect(instances).toHaveLength(mockShoppingCart.length);
     expect(instances[0].item).toEqual(mockShoppingCart[0]);
     expect(instances[1].item).toEqual(mockShoppingCart[1]);
+    const emptyCartEl = ngMocks.find('[data-testid="empty-cart"]',null);
     expect(emptyCartEl).toBeNull();
   })
 
@@ -66,12 +68,11 @@ describe('Container Component: Cart Component', () => {
     // ACT
     mockStore$.next([]);
     fixture.detectChanges();
-    const emptyCartEl = ngMocks.find('[data-testid="empty-cart"]');
-    const shoppingCartInstance = ngMocks.find(ShoppingCartComponent,null); 
-
+    
     // ASSERT
+    const emptyCartEl = ngMocks.find('[data-testid="empty-cart"]');
     expect(emptyCartEl).toBeDefined();
+    const shoppingCartInstance = ngMocks.find(ShoppingCartComponent,null); 
     expect(shoppingCartInstance).toBeNull();
   })
-
 })

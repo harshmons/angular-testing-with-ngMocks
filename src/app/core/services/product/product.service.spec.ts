@@ -6,10 +6,10 @@ import {
 import { EMPTY } from 'rxjs';
 import { MockBuilder, ngMocks } from 'ng-mocks';
 import { AppModule } from './../../../app.module';
-import { ProductService } from './product.service';
 import { mockProducts, mockProduct } from '../../../mocks';
+import { ProductService } from './product.service';
 
-describe('Service: Product', () => {
+describe('Service : Product', () => {
   beforeEach(() => {
     return MockBuilder(ProductService, AppModule).replace(
       HttpClientModule,

@@ -1,14 +1,14 @@
-import { ProductDetailComponent } from './product-detail.component';
 import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
 import { mockProduct } from '../../../mocks';
 import { ProductFeatureModule } from '../../feature/product-feature.module';
+import { ProductDetailComponent } from './product-detail.component';
 
-describe('Component : Home Component', () => {
+describe('Component : ProductDetail', () => {
   beforeEach(() => {
     return MockBuilder(ProductDetailComponent, ProductFeatureModule)
   })
   it('should be defined', () => {
-    // ACT
+    // ARRANGE
     const fixture = MockRender(ProductDetailComponent);
     
     // ASSERT
@@ -16,7 +16,7 @@ describe('Component : Home Component', () => {
   });
 
   it("should map the product properties in the DOM if input is given",()=>{
-    // ACT
+    // ARRANGE
     const fixture = MockRender(ProductDetailComponent,{
       detail:mockProduct
     });
@@ -37,7 +37,7 @@ describe('Component : Home Component', () => {
   })
 
   it("should map the product properties in the DOM if input is not given",()=>{
-    // ACT
+    // ARRANGE
     const fixture = MockRender(ProductDetailComponent);
     fixture.detectChanges()
     

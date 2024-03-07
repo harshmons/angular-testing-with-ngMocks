@@ -1,11 +1,10 @@
-import { Subject } from 'rxjs';
-import { NewProductComponent } from './new-product.component';
-import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
 import { FormsModule, NgModel } from "@angular/forms";
 import { MatInput } from "@angular/material/input";
+import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
 import { ProductFeatureModule } from '../../feature/product-feature.module';
+import { NewProductComponent } from './new-product.component';
 
-describe('NewProductComponent', () => {
+describe('Component : NewProduct', () => {
   
   beforeEach(() => MockBuilder(NewProductComponent, ProductFeatureModule)
     .keep(FormsModule)
@@ -14,16 +13,19 @@ describe('NewProductComponent', () => {
 
 
   it('should be defined', () => {
-    // ACT
+    // ARRANGE
     const fixture = MockRender(NewProductComponent);
     
     // ASSERT
     expect(fixture.point.componentInstance).toBeDefined();
   })
 
-  it('should test the Title control to be defined', () => {
+  it('should render Title control', () => {
+    // ARRANGE
     MockRender(NewProductComponent);
     const titleInputEl = ngMocks.find(['data-testid', 'titleControl']);
+    
+    // ASSERT
     expect(ngMocks.get(titleInputEl, MatInput, undefined)).toBeDefined();
     expect(ngMocks.get(titleInputEl, NgModel, undefined)).toBeDefined();
   });
@@ -160,7 +162,6 @@ describe('NewProductComponent', () => {
       image:null,
       category:null,
     })
-
   });
 
   it('should not reset the form data on resetInput value as false',async () => {
@@ -185,5 +186,4 @@ describe('NewProductComponent', () => {
     // ASSERT
     expect(component.addForm.value).toEqual(newProduct)
   });
-
 });

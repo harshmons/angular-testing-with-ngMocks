@@ -3,10 +3,10 @@ import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
 import { ProductService } from '../../../core/services/product/product.service';
 import {mockForm} from "../../../mocks"
 import { NewProductComponent } from '../../components';
-import { AddNewProductFeatureComponent } from './add-new-product-feature.component';
 import { ProductFeatureModule } from '../product-feature.module';
+import { AddNewProductFeatureComponent } from './add-new-product-feature.component';
 
-describe('Feature Component : AddNewProductFeatureComponent', () => {
+describe('Component : AddNewProductFeature', () => {
   let addProductToDB$: Subject<any>;
   
   beforeEach(() => {
@@ -121,5 +121,4 @@ describe('Feature Component : AddNewProductFeatureComponent', () => {
     // ASSERT
     expect(fixture.componentInstance.isAdded).toBeFalsy();
   })
-  
 });

@@ -1,15 +1,14 @@
 import { NavbarComponent } from './navbar.component';
-import { FORMAT_SINGLE, MockBuilder, MockRender, NG_MOCKS_ROOT_PROVIDERS, ngMocks } from 'ng-mocks';
-import { Subject, of } from 'rxjs';
+import { MockBuilder, MockRender,ngMocks } from 'ng-mocks';
+import { Subject} from 'rxjs';
 import { LayoutModule } from '../layout.module';
 import { Store } from '@ngrx/store';
 import { mockShoppingCart } from '../../mocks';
 import { MatBadge } from '@angular/material/badge';
 import { cold, hot } from 'jest-marbles';
-import { RouterLink, RouterModule } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
 
-describe('Navbar component One way', () => {
+describe('Component : Navbar', () => {
+  // One Way
   // In this we are asserting the count on the rendered HTML
   
   let mockStore$ : Subject<any>;
@@ -25,15 +24,23 @@ describe('Navbar component One way', () => {
   });
 
   it('should be defined', () => {
+    // ARRANGE
     const fixture = MockRender(NavbarComponent);
+    
+    // ASSERT
     expect(fixture.componentInstance).toBeDefined();
   });
 
-  it('should render the correct cart count in mat-icon', async () => {
+  it('should render the correct cart count in mat-icon',() => {
+    // ARRANGE
     const fixture = MockRender(NavbarComponent);
+    
+    // ACT
     mockStore$.next(mockShoppingCart.length)
-    const matBadge = ngMocks.findInstance(fixture,MatBadge)
     fixture.detectChanges();
+    
+    // ASSERT
+    const matBadge = ngMocks.findInstance(fixture,MatBadge)
     expect(matBadge.content).toBe(mockShoppingCart.length);
   });
 
@@ -56,8 +63,9 @@ describe('Navbar component One way', () => {
   });
 
 });
-describe('Navbar component Other Way', () => {
-// In this we are asserting only the count observable through jest marbel
+describe('Component : Navbar', () => {
+  // Other Way
+  // In this we are asserting only the count observable through jest marbel
   beforeEach(() => {
     return MockBuilder(NavbarComponent, LayoutModule).provide({provide:Store,useValue:{
       select: jest.fn().mockReturnValue(hot('-a|',{a:mockShoppingCart.length}))
@@ -65,14 +73,20 @@ describe('Navbar component Other Way', () => {
   });
 
   it('should be defined', () => {
+    // ARRANGE
     const fixture = MockRender(NavbarComponent);
+    
+    // ASSERT
     expect(fixture.componentInstance).toBeDefined();
   });
 
   
   it('should have the correct data in count$', async () => {
+    // ARRANGE
     const fixture = MockRender(NavbarComponent);
     const expected = cold('-a|',{a:mockShoppingCart.length});
+    
+    // ASSERT
     expect(fixture.componentInstance.count$).toBeObservable(expected);
   });
 });

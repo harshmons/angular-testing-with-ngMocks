@@ -1,7 +1,7 @@
 import { RoundOffPricePipe } from './round-off-price.pipe';
 import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
 
-describe('Pipe : Round Off Price', () => {
+describe('Pipe : RoundOffPrice', () => {
   beforeEach(() => {
     return MockBuilder(RoundOffPricePipe).provide(RoundOffPricePipe)
   })

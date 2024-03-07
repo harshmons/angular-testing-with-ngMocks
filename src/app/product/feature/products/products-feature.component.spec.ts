@@ -1,21 +1,18 @@
-import { ProductsFeatureComponent } from './products-feature.component';
-import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
-import { AppModule } from '../../../app.module';
-import { ProductService } from '../../../core/services/product/product.service';
-import {mockProducts,mockProduct} from "../../../mocks"
-import { of, EMPTY, Subject } from 'rxjs';
-import { cold } from 'jest-marbles';
 import { Store } from '@ngrx/store';
-import * as actions from '../../store/actions/products.actions';
-import * as cartActions from '../../../cart/store';
-import { ProductCardComponent } from '../../components';
 import { MatSpinner } from '@angular/material/progress-spinner';
+import { Subject } from 'rxjs';
+import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
+import {mockProducts} from "../../../mocks"
+import * as cartActions from '../../../cart/store';
+import * as actions from '../../store/actions/products.actions';
+import { ProductCardComponent } from '../../components';
 import { ProductFeatureModule } from '../product-feature.module';
+import { ProductsFeatureComponent } from './products-feature.component';
 
 jest.spyOn(actions,'getProductList')
 jest.spyOn(cartActions,'addToCart')
 
-describe('ProductsComponent', () => {
+describe('Component : ProductsFeature', () => {
   let mockStore$ : Subject<any>;
   beforeEach(() => {
     mockStore$ = new Subject();
@@ -33,7 +30,10 @@ describe('ProductsComponent', () => {
   );
 
   it('should render the component', () => {
+    // ARRANGE
     const fixture = MockRender(ProductsFeatureComponent);
+    
+    // ASSERT
     expect(fixture).toBeDefined();
   });
 
@@ -56,10 +56,10 @@ describe('ProductsComponent', () => {
     mockStore$.next(mockProducts)
     fixture.detectChanges()
     await fixture.whenStable();
+    
+    // ASSERT
     const productCardComponentEl = ngMocks.findInstances(fixture,ProductCardComponent);
     const matSpinnerEl = ngMocks.findInstance(fixture,MatSpinner,null);
-
-    // ASSERT
     expect(productCardComponentEl).toHaveLength(mockProducts.length);
     expect(productCardComponentEl[0].product).toEqual(mockProducts[0]);
     expect(productCardComponentEl[1].product).toEqual(mockProducts[1])
@@ -73,13 +73,12 @@ describe('ProductsComponent', () => {
     // ACT
     fixture.detectChanges()
     await fixture.whenStable();
-    const matSpinnerEl = ngMocks.findInstances(fixture,MatSpinner);
-    const productCardComponentEl = ngMocks.findInstance(fixture,ProductCardComponent,null);
     
     // ASSERT
+    const matSpinnerEl = ngMocks.findInstances(fixture,MatSpinner);
+    const productCardComponentEl = ngMocks.findInstance(fixture,ProductCardComponent,null);
     expect(matSpinnerEl).toBeDefined();
     expect(productCardComponentEl).toBeNull();
-    
   })
 
   it('should dispatch an action addToCart when handleAddToCart is getting called from ProductCardComponent',async ()=>{
@@ -92,14 +91,13 @@ describe('ProductsComponent', () => {
     mockStore$.next(mockProducts)
     fixture.detectChanges()
     await fixture.whenStable();
-    const productCardComponentEl = ngMocks.findInstance(fixture,ProductCardComponent);
-    productCardComponentEl.onAddToCart.emit(mockProducts[1]);
     
     // ASSERT
+    const productCardComponentEl = ngMocks.findInstance(fixture,ProductCardComponent);
+    productCardComponentEl.onAddToCart.emit(mockProducts[1]);
     expect(storeService.dispatch).toHaveBeenCalledTimes(1);
     expect(cartActions.addToCart).toHaveBeenCalledTimes(1);
     const {description,...expectedCartItem} = mockProducts[1];
     expect(cartActions.addToCart).toHaveBeenCalledWith({item:expectedCartItem});
   })
-
 });

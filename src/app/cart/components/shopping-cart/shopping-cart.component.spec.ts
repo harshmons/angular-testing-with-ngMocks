@@ -3,14 +3,14 @@ import { mockCart } from '../../../mocks';
 import { ShoppingCartComponent } from './shopping-cart.component';
 import { CartFeatureModule } from '../../feature/cart-feature.module';
 
-describe('Component: ShoppingCart', () => {
+describe('Component : ShoppingCart', () => {
   
   beforeEach(() => {
     return MockBuilder(ShoppingCartComponent,CartFeatureModule)
   })
   
   it('should be defined', () => {
-    //ARRANGE
+    // ARRANGE
     const fixture = MockRender(ShoppingCartComponent, {
       item: mockCart
     });

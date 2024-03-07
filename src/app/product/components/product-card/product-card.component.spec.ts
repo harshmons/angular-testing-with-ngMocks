@@ -1,21 +1,18 @@
-import { MockBuilder, MockedComponentFixture, MockRender, NG_MOCKS_ROOT_PROVIDERS, ngMocks } from 'ng-mocks';
-import { ProductCardComponent } from './product-card.component';
+import { RouterLink} from '@angular/router';
+import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
 import { mockProduct } from '../../../mocks';
-import { AppModule } from '../../../app.module';
-import { Product } from '../../../core/models';
 import { RoundOffPricePipe } from '../../../shared/pipes/round-off-price.pipe';
-import { RouterLink, RouterModule } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
 import { ProductFeatureModule } from '../../feature/product-feature.module';
+import { ProductCardComponent } from './product-card.component';
 
-describe('Component : ProductCardComponent', () => {
+describe('Component : ProductCard', () => {
 
   beforeEach(() => {
     return MockBuilder(ProductCardComponent,ProductFeatureModule).mock(RoundOffPricePipe,(val)=>val).keep(RouterLink)
   })
 
   it('should be defined', () => {
-    // ACT
+    // ARRANGE
     const fixture = MockRender(ProductCardComponent,{product:mockProduct});
     
     // ASSERT
@@ -23,7 +20,7 @@ describe('Component : ProductCardComponent', () => {
   });
 
   it("should map the product properties in the DOM if input is given",()=>{
-    // ACT
+    // ARRANGE
     const fixture = MockRender(ProductCardComponent,{
       product:mockProduct
     });
@@ -72,13 +69,13 @@ describe('Component : ProductCardComponent', () => {
       product:mockProduct
     });
     fixture.detectChanges()
-    
-    // ACT
     const addToCartEl = ngMocks.find('[data-testid="product-add-to-cart"]');
     let emittedData;
     fixture.point.componentInstance.onAddToCart.subscribe((data)=>{
       emittedData=data;
     });
+    
+    // ACT
     ngMocks.trigger(addToCartEl,'click')
     fixture.detectChanges();
     
@@ -92,6 +89,7 @@ describe('Component : ProductCardComponent', () => {
   // Suggested is above one as it makes more sense from end user prespective
   it('should call the addToCart product method on triggering click event on button ', () => {
     // This test case only checks the binding of HTML with Class method
+    
     // ARRANGE
     const fixture = MockRender(ProductCardComponent,{
       product:mockProduct,
@@ -126,5 +124,4 @@ describe('Component : ProductCardComponent', () => {
     expect(fixture.componentInstance.onAddToCart).toHaveBeenCalledWith(mockProduct);
     // Read about point here - https://ng-mocks.sudo.eu/api/MockRender#proxy-between-params-and-fixture
   });
-
 });

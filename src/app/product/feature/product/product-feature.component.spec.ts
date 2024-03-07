@@ -1,17 +1,17 @@
-import { mockProduct } from '../../../mocks';
-import {  Subject, of } from 'rxjs';
-import { ProductFeatureComponent } from './product-feature.component';
-import { MockBuilder, MockRender, ngMocks} from 'ng-mocks';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import {  Subject, of } from 'rxjs';
+import { MockBuilder, MockRender, ngMocks} from 'ng-mocks';
+import { mockProduct } from '../../../mocks';
 import * as action from '../../store/actions/products.actions';
 import { ProductDetailComponent } from '../../components';
 import { selectSelectedProduct } from '../../store/reducers/products.reducer';
 import { ProductFeatureModule } from '../product-feature.module';
+import { ProductFeatureComponent } from './product-feature.component';
 
 jest.spyOn(action,'getProduct')
 
-describe('Feature Component : Product', () => {
+describe('Component : Product', () => {
   
   let mockStore$ : Subject<any>;
   beforeEach(() => {
@@ -67,5 +67,4 @@ describe('Feature Component : Product', () => {
     expect(storeService.select).toHaveBeenCalledWith(selectSelectedProduct);
     expect(productDetailComponentEl.detail).toEqual(mockProduct)
   })
-
 })
