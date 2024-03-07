@@ -6,7 +6,10 @@
     "start": "ng serve --proxy-config proxy.config.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "compodoc:build": "compodoc -p tsconfig.doc.json",
+    "compodoc:build-and-serve": "compodoc -p tsconfig.doc.json -s",
+    "compodoc:serve": "compodoc -s"
   },
   "private": true,
   "dependencies": {
@@ -33,6 +36,7 @@
     "@angular/cli": "~13.3.1",
     "@angular/compiler-cli": "~13.3.0",
     "@briebug/jest-schematic": "^4.0.0",
+    "@compodoc/compodoc": "^1.1.23",
     "@schematics/angular": "^15.0.2",
     "@types/jest": "^29.5.12",
     "@types/node": "^12.11.1",

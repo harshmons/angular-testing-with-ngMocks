@@ -3,11 +3,11 @@ import { NewProductComponent } from './new-product.component';
 import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
 import { FormsModule, NgModel } from "@angular/forms";
 import { MatInput } from "@angular/material/input";
-import { FeatureModule } from '../../feature/feature.module';
+import { ProductFeatureModule } from '../../feature/product-feature.module';
 
 describe('NewProductComponent', () => {
   
-  beforeEach(() => MockBuilder(NewProductComponent, FeatureModule)
+  beforeEach(() => MockBuilder(NewProductComponent, ProductFeatureModule)
     .keep(FormsModule)
     .keep(MatInput)
   );

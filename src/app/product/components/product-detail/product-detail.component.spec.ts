@@ -1,11 +1,11 @@
 import { ProductDetailComponent } from './product-detail.component';
 import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
-import { FeatureModule } from '../../feature/feature.module';
 import { mockProduct } from '../../../mocks';
+import { ProductFeatureModule } from '../../feature/product-feature.module';
 
 describe('Component : Home Component', () => {
   beforeEach(() => {
-    return MockBuilder(ProductDetailComponent, FeatureModule)
+    return MockBuilder(ProductDetailComponent, ProductFeatureModule)
   })
   it('should be defined', () => {
     // ACT

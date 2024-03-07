@@ -3,15 +3,15 @@ import { ProductCardComponent } from './product-card.component';
 import { mockProduct } from '../../../mocks';
 import { AppModule } from '../../../app.module';
 import { Product } from '../../../core/models';
-import { FeatureModule } from '../../feature/feature.module';
 import { RoundOffPricePipe } from '../../../shared/pipes/round-off-price.pipe';
 import { RouterLink, RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { ProductFeatureModule } from '../../feature/product-feature.module';
 
 describe('Component : ProductCardComponent', () => {
 
   beforeEach(() => {
-    return MockBuilder(ProductCardComponent,FeatureModule).mock(RoundOffPricePipe,(val)=>val).keep(RouterLink)
+    return MockBuilder(ProductCardComponent,ProductFeatureModule).mock(RoundOffPricePipe,(val)=>val).keep(RouterLink)
   })
 
   it('should be defined', () => {

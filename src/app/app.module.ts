@@ -8,8 +8,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { shoppingCartReducer } from './cart/store';
-import { FeatureModule as CartFeature } from './cart/feature/feature.module';
-import { FeatureModule as ProductFeature } from './product/feature/feature.module';
+import { CartFeatureModule } from './cart/feature/cart-feature.module';
+import { ProductFeatureModule } from './product/feature/product-feature.module';
 import { productsReducer,ProductsEffects } from './product/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,8 +25,8 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    ProductFeature,
-    CartFeature,
+    ProductFeatureModule,
+    CartFeatureModule,
     LayoutModule,
     StoreModule.forRoot({products:productsReducer,cart:shoppingCartReducer}),
     EffectsModule.forRoot([ProductsEffects]),

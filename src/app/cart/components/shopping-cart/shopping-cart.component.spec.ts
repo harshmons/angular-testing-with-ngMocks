@@ -1,14 +1,16 @@
-import { ShoppingCartComponent } from './shopping-cart.component';
 import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
 import { mockCart } from '../../../mocks';
-import { FeatureModule } from '../../feature/feature.module';
+import { ShoppingCartComponent } from './shopping-cart.component';
+import { CartFeatureModule } from '../../feature/cart-feature.module';
 
 describe('Component: ShoppingCart', () => {
+  
   beforeEach(() => {
-    return MockBuilder(ShoppingCartComponent,FeatureModule)
+    return MockBuilder(ShoppingCartComponent,CartFeatureModule)
   })
+  
   it('should be defined', () => {
-    //ACT
+    //ARRANGE
     const fixture = MockRender(ShoppingCartComponent, {
       item: mockCart
     });
@@ -18,7 +20,7 @@ describe('Component: ShoppingCart', () => {
   })
 
   it("should map the cart item properties in the DOM if input is given",()=>{
-    // ACT
+    // ARRANGE
     const fixture = MockRender(ShoppingCartComponent,{
       item:mockCart
     });
@@ -37,6 +39,5 @@ describe('Component: ShoppingCart', () => {
 
     const productQuantityEl = ngMocks.find('[data-testid="product-quantity"]');
     expect(ngMocks.formatText(productQuantityEl)).toMatch(mockCart.quantity.toString());
-
   })
 })
