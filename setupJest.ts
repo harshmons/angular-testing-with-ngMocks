@@ -6,6 +6,6 @@ ngMocks.autoSpy('jest');
 // of a component or another service as a dependency 
 
 
-
+// jest.setTimeout(30000);
 
 
