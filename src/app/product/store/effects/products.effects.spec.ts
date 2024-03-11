@@ -37,7 +37,7 @@ describe("Effect : Product",()=>{
         expect(effects.loadProducts$).toBeObservable(expected)
     })
 
-    it("should do the side effect for error",()=>{
+    it("should do the side effect for error for loadProducts",()=>{
         // ARRANGE
         const productService = ngMocks.findInstance(ProductService);
         const error = new Error("Sample Error");
@@ -78,7 +78,7 @@ describe("Effect : Product",()=>{
         })
     })
 
-    it("should do the side effect for error",()=>{
+    it("should do the side effect for error for loadProductById",()=>{
         // ARRANGE
         const productService = ngMocks.findInstance(ProductService);
         const error = new Error("Sample Error");

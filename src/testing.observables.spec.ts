@@ -43,6 +43,7 @@ describe("Testing Observables patterns",()=>{
         expect(actualErrorData).toEqual(simpleError);
     })
     describe("Jest done approach",()=>{
+        // eslint-disable-next-line jest/no-done-callback
         it("Subscribe pattern of a simple delayed obervable",(done)=>{
             // ARRANGE
             const obervable = of(1,2,3).pipe(delay(100),map(data=> data*10));

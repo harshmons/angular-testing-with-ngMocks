@@ -1,6 +1,6 @@
 import {mockProducts,mockProduct} from "../../../mocks"
 import * as actions from "./products.actions";
-describe("Actions : Product ",()=>{
+describe("Actions : Product",()=>{
     it('should create getProductList action',()=>{
         // ACT
         const action = actions.getProductList()

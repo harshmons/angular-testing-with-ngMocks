@@ -7,8 +7,7 @@ import { mockShoppingCart } from '../../mocks';
 import { MatBadge } from '@angular/material/badge';
 import { cold, hot } from 'jest-marbles';
 
-describe('Component : Navbar', () => {
-  // One Way
+describe('Component : Navbar //One Way', () => {
   // In this we are asserting the count on the rendered HTML
   
   let mockStore$ : Subject<any>;
@@ -63,8 +62,7 @@ describe('Component : Navbar', () => {
   });
 
 });
-describe('Component : Navbar', () => {
-  // Other Way
+describe('Component : Navbar // Other Way', () => {
   // In this we are asserting only the count observable through jest marbel
   beforeEach(() => {
     return MockBuilder(NavbarComponent, LayoutModule).provide({provide:Store,useValue:{

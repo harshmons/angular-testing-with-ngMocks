@@ -63,7 +63,7 @@ describe('Component : ProductCard', () => {
     expect(moreDetailsEl.properties['outerHTML']).toMatch('products,'+mockProduct.id.toString());
   });
 
-  it('should emit product data on triggering click event on button ', () => {
+  it('should emit product data on triggering click event on button', () => {
     // ARRANGE
     const fixture = MockRender(ProductCardComponent,{
       product:mockProduct
@@ -87,7 +87,7 @@ describe('Component : ProductCard', () => {
   // avoid integration testing and test everything in isolated.
   // Which means instead of writing above 1 test case we can also break down into below 2 test cases.
   // Suggested is above one as it makes more sense from end user prespective
-  it('should call the addToCart product method on triggering click event on button ', () => {
+  it('should call the addToCart product method on triggering click event on button', () => {
     // This test case only checks the binding of HTML with Class method
     
     // ARRANGE

@@ -29,7 +29,7 @@ describe('Component : AddNewProductFeature', () => {
   })
 
   
-  it('should render success message when isAdded is true ', () => {
+  it('should render success message when isAdded is true', () => {
     // ARRANGE
     const fixture = MockRender(AddNewProductFeatureComponent);
     
