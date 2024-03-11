@@ -131,6 +131,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Add New Product Feature Component</p>
+
+    </p>
 
 
 
@@ -234,7 +241,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/product/feature/add-new-product/add-new-product-feature.component.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/product/feature/add-new-product/add-new-product-feature.component.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -301,14 +308,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="14"
-                                    class="link-to-prism">src/app/product/feature/add-new-product/add-new-product-feature.component.ts:14</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="31"
+                                    class="link-to-prism">src/app/product/feature/add-new-product/add-new-product-feature.component.ts:31</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Method which calls the service to add the given product in DB</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -372,7 +381,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/product/feature/add-new-product/add-new-product-feature.component.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/product/feature/add-new-product/add-new-product-feature.component.ts:19</a></div>
                         </td>
                     </tr>
 
@@ -388,16 +397,33 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component} from &#x27;@angular/core&#x27;;
 import { ProductService } from &#x27;../../../core/services/product/product.service&#x27;;
 
+/**
+ * Add New Product Feature Component
+ * @export
+ * @class AddNewProductFeatureComponent
+ * @method onAddProduct
+ */
 @Component({
   selector: &#x27;app-add-new-product-feature&#x27;,
   templateUrl: &#x27;./add-new-product-feature.component.html&#x27;,
   styleUrls: [&#x27;./add-new-product-feature.component.css&#x27;]
 })
 export class AddNewProductFeatureComponent {
+  /**
+   * @member
+   */
   isAdded &#x3D; false;
 
+  /**
+   * @constructor
+   * @param productService 
+   */
   constructor(private productService: ProductService) { }
 
+  /**
+   * Method which calls the service to add the given product in DB
+   * @param product
+   */
   onAddProduct(product:any) {
     this.productService.addProductToDB(product).subscribe(
       _data &#x3D;&gt; {
