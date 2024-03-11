@@ -1,4 +1,3 @@
-console.log("------------------ I am called")
 module.exports = {
   // moduleNameMapper: {
   //   '@core/(.*)': '<rootDir>/src/app/core/$1',
@@ -10,6 +9,14 @@ module.exports = {
   //   "^.+\\.[t|j]s?$": "babel-jest"
   // },
   preset: 'jest-preset-angular',
-  setupFilesAfterEnv: ['<rootDir>/setupJest.ts']
+  setupFilesAfterEnv: ['<rootDir>/setupJest.ts'],
+  coverageThreshold: {
+    global: {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100,
+    }
+  }
 };
 
