@@ -102,8 +102,8 @@ describe("Testing Observables patterns",()=>{
         }))
     })
    
-    describe('Marbel Patterns',()=>{
-        it("Marbel pattern of a simple obervable",()=>{
+    describe('Marble Patterns',()=>{
+        it("Marble pattern of a simple obervable",()=>{
             // ARRANGE
             const obervable = cold('abc',{a:1,b:2,c:3});
             const expectedObservable = cold("123");
@@ -113,7 +113,7 @@ describe("Testing Observables patterns",()=>{
         })
 
     
-        it("Marbel pattern of a simple delayed obervable",()=>{
+        it("Marble pattern of a simple delayed obervable",()=>{
             // ARRANGE
             const obervable = cold('-a--b---c',{a:1,b:2,c:3});
             const expectedObservable = cold("-1--2---3");
@@ -122,7 +122,7 @@ describe("Testing Observables patterns",()=>{
             expect(obervable).toBeObservable(expectedObservable);
         })
 
-        it("Marbel pattern of a simple delayed mapped obervable",()=>{
+        it("Marble pattern of a simple delayed mapped obervable",()=>{
             // ARRANGE
             const obervable = cold('-a--b---c',{a:1,b:2,c:3}).pipe(map(val=>val*10));
             const expectedObservable = cold("-a--b---c",{a:10,b:20,c:30});
@@ -131,7 +131,7 @@ describe("Testing Observables patterns",()=>{
             expect(obervable).toBeObservable(expectedObservable);
         })
     
-        it("Marbel pattern of a simple delayed and completed obervable",()=>{
+        it("Marble pattern of a simple delayed and completed obervable",()=>{
             // ARRANGE
             const obervable = cold('-a-b-c|',{a:1,b:2,c:3});
             const expectedObservable = cold("-1-2-3|");
@@ -140,7 +140,7 @@ describe("Testing Observables patterns",()=>{
             expect(obervable).toBeObservable(expectedObservable);
         })
     
-        it("Marbel pattern of a simple delayed and completed hot obervable",()=>{
+        it("Marble pattern of a simple delayed and completed hot obervable",()=>{
             // ARRANGE
             const obervable = hot('-a-^b-c|',{a:1,b:2,c:3});
             const expectedObservable = cold("-2-3|");
@@ -149,7 +149,7 @@ describe("Testing Observables patterns",()=>{
             expect(obervable).toBeObservable(expectedObservable);
         })
     
-        it("Marbel pattern of a simple error obervable",()=>{
+        it("Marble pattern of a simple error obervable",()=>{
             // ARRANGE
             const simpleError = new Error("Simple Error message")
             const obervable = cold('#',null,simpleError);
@@ -159,7 +159,7 @@ describe("Testing Observables patterns",()=>{
             expect(obervable).toBeObservable(expectedObservable);
         })
     
-        it("Marbel pattern of a simple delayed error obervable",()=>{
+        it("Marble pattern of a simple delayed error obervable",()=>{
             // ARRANGE
             const simpleError = new Error("Simple Error message")
             const obervable = cold('--#',null,simpleError);
@@ -169,7 +169,7 @@ describe("Testing Observables patterns",()=>{
             expect(obervable).toBeObservable(expectedObservable);
         })
     
-        it("Marbel pattern of a mixed output obervable",()=>{
+        it("Marble pattern of a mixed output obervable",()=>{
             // ARRANGE
             const simpleError = new Error("Simple Error message")
             const obervable = cold('--a--#',{a:1},simpleError);
@@ -179,7 +179,7 @@ describe("Testing Observables patterns",()=>{
             expect(obervable).toBeObservable(expectedObservable);
         })
 
-        it("Marbel pattern of testing a value to be set once the value is received from observable stream",()=>{
+        it("Marble pattern of testing a value to be set once the value is received from observable stream",()=>{
             // ARRANGE
             const observable = cold('-1-2-3');
             const expectedObservable = cold("-1-2-3");
