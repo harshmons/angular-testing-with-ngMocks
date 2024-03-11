@@ -83,9 +83,9 @@ describe('Component : ProductCard', () => {
     expect(emittedData).toEqual(mockProduct);
   });
 
-  // Above test case can also be written in below ways to 
+  // Above test case can also be written in below ways too i.e. 
   // avoid integration testing and test everything in isolated.
-  // Which means instead of writing above 1 test case we can also break down into below 2 test cases
+  // Which means instead of writing above 1 test case we can also break down into below 2 test cases.
   // Suggested is above one as it makes more sense from end user prespective
   it('should call the addToCart product method on triggering click event on button ', () => {
     // This test case only checks the binding of HTML with Class method
