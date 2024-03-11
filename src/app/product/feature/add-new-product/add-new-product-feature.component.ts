@@ -6,6 +6,8 @@ import { ProductService } from '../../../core/services/product/product.service';
  * @export
  * @class AddNewProductFeatureComponent
  * @method onAddProduct
+ * @constructor
+ * @member isAdded
  */
 @Component({
   selector: 'app-add-new-product-feature',
@@ -14,18 +16,19 @@ import { ProductService } from '../../../core/services/product/product.service';
 })
 export class AddNewProductFeatureComponent {
   /**
-   * @member
+   * Class property to hold new product added flag
    */
   isAdded = false;
 
   /**
-   * @constructor
-   * @param productService 
+   * Constructor method
+   * @param {ProductService} productService service for adding a product in DB
    */
   constructor(private productService: ProductService) { }
 
   /**
    * Method which calls the service to add the given product in DB
+   * @name onAddProduct
    * @param product
    */
   onAddProduct(product:any) {
