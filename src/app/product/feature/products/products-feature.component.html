@@ -3,7 +3,7 @@
     <div class="row">
       <app-product-card
         [product]="prod"
-        (onAddToCart)="handleAddToCart($event)"
+        (addToCart)="onAddToCart($event)"
         *ngFor="let prod of products"
         class="col-3"
       ></app-product-card>

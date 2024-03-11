@@ -25,7 +25,7 @@ export class ProductsFeatureComponent implements OnInit {
     this.products$ = this.store.select(selectProductList)
   }
 
-  handleAddToCart(product: Product) {
+  onAddToCart(product: Product) {
     const cartItem: Cart = {
       category: product.category,
       id: product.id,

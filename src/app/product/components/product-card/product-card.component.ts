@@ -8,9 +8,9 @@ import { Product } from '../../../core/models';
 })
 export class ProductCardComponent {
   @Input() product: Product;
-  @Output() onAddToCart = new EventEmitter<Product>();
+  @Output() addToCart = new EventEmitter<Product>();
 
-  addToCart(product: Product) {
-    this.onAddToCart.emit(product);
+  handleAddToCart(product: Product) {
+    this.addToCart.emit(product);
   }
 }

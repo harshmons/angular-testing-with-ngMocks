@@ -71,7 +71,7 @@ describe('Component : ProductCard', () => {
     fixture.detectChanges()
     const addToCartEl = ngMocks.find('[data-testid="product-add-to-cart"]');
     let emittedData;
-    fixture.point.componentInstance.onAddToCart.subscribe((data)=>{
+    fixture.point.componentInstance.addToCart.subscribe((data)=>{
       emittedData=data;
     });
     
@@ -94,7 +94,7 @@ describe('Component : ProductCard', () => {
     const fixture = MockRender(ProductCardComponent,{
       product:mockProduct,
     });
-    fixture.point.componentInstance.addToCart = jest.fn()
+    fixture.point.componentInstance.handleAddToCart = jest.fn()
     fixture.detectChanges()
     
     // ACT
@@ -103,25 +103,25 @@ describe('Component : ProductCard', () => {
     fixture.detectChanges()
 
     // ASSERT
-    expect(fixture.point.componentInstance.addToCart).toHaveBeenCalledTimes(1);
-    expect(fixture.point.componentInstance.addToCart).toHaveBeenCalledWith(mockProduct);
+    expect(fixture.point.componentInstance.handleAddToCart).toHaveBeenCalledTimes(1);
+    expect(fixture.point.componentInstance.handleAddToCart).toHaveBeenCalledWith(mockProduct);
   });
 
-  it('should emit the passed product on calling addToCart method', () => {
-    // This test case only checks that on calling addToCart method, it calls the output method
+  it('should emit the passed product on calling handleAddToCart method', () => {
+    // This test case only checks that on calling handleAddToCart method, it calls the output method
     // ARRANGE
     const fixture = MockRender(ProductCardComponent,{
       product:mockProduct,
-      onAddToCart:jest.fn()
+      addToCart:jest.fn()
     });
     fixture.detectChanges()
     
     // ACT
-    fixture.point.componentInstance.addToCart(mockProduct);
+    fixture.point.componentInstance.handleAddToCart(mockProduct);
 
     // ASSERT
-    expect(fixture.componentInstance.onAddToCart).toHaveBeenCalledTimes(1);
-    expect(fixture.componentInstance.onAddToCart).toHaveBeenCalledWith(mockProduct);
+    expect(fixture.componentInstance.addToCart).toHaveBeenCalledTimes(1);
+    expect(fixture.componentInstance.addToCart).toHaveBeenCalledWith(mockProduct);
     // Read about point here - https://ng-mocks.sudo.eu/api/MockRender#proxy-between-params-and-fixture
   });
 });

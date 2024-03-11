@@ -94,7 +94,7 @@ describe('Component : ProductsFeature', () => {
     
     // ASSERT
     const productCardComponentEl = ngMocks.findInstance(fixture,ProductCardComponent);
-    productCardComponentEl.onAddToCart.emit(mockProducts[1]);
+    productCardComponentEl.addToCart.emit(mockProducts[1]);
     expect(storeService.dispatch).toHaveBeenCalledTimes(1);
     expect(cartActions.addToCart).toHaveBeenCalledTimes(1);
     const {description,...expectedCartItem} = mockProducts[1];
