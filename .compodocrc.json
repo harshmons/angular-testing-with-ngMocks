@@ -3,5 +3,4 @@
     "tsconfig": "tsconfig.doc.json",
     "hideGenerator": true,
     "coverageTest": 0
-
 }
