@@ -10,9 +10,9 @@ jobs:
   lint:
     name: "Run ESLint for linting code"
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: angularWebApp
+    # defaults:
+    #   run:
+    #     working-directory: angularWebApp
 
     steps:
       - name: "Checkout code"
@@ -29,7 +29,7 @@ jobs:
         with:
           path: |
             node_modules
-          key: ${{ runner.os }}-node-14-node_modules-${{ hashFiles('ang/package-lock.json') }}
+          key: ${{ runner.os }}-node-14-node_modules-${{ hashFiles('package-lock.json') }}
 
       - name: "Install dependencies"
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
