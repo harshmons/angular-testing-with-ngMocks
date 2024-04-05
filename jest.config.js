@@ -20,7 +20,6 @@ module.exports = {
   },
   collectCoverage:true,
   "collectCoverageFrom": [
-    "!src/**/*.ts",
     "src/**/*.service.ts",
     "src/**/*.component.ts",
     "src/**/*.directive.ts",
