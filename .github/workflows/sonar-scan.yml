@@ -6,7 +6,7 @@ on:
   pull_request:
       types: [opened, synchronize, reopened]
 
-name: sonar-scanning
+name: sonar-scan
 jobs:
   sonarqube:
     runs-on: ubuntu-latest
