@@ -1,5 +1,3 @@
-name: sonar-scan
-
 on:
   # Trigger analysis when pushing to your main branches, and when creating a pull request.
   push:
@@ -8,7 +6,7 @@ on:
   pull_request:
       types: [opened, synchronize, reopened]
 
-name: Main Workflow
+name: sonar-scan
 jobs:
   sonarqube:
     runs-on: ubuntu-latest
