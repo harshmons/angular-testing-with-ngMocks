@@ -1,4 +1,4 @@
-name: sonar-scanning
+name: sonar-scan
 
 on:
   # Trigger analysis when pushing to your main branches, and when creating a pull request.
