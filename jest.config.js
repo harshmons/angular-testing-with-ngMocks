@@ -18,6 +18,16 @@ module.exports = {
       statements: 100,
     }
   },
-  collectCoverage:true
+  collectCoverage:true,
+  "collectCoverageFrom": [
+    "src/**/*.service.ts",
+    "src/**/*.component.ts",
+    "src/**/*.actions.ts",
+    "src/**/*.reducer.ts",
+    "src/**/*.effects.ts",
+    "src/**/*.pipe.ts",
+    "src/**/*.validator.ts",
+    "src/**/*.guard.ts"
+  ],
 };
 
