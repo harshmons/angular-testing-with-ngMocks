@@ -19,16 +19,16 @@ module.exports = {
     }
   },
   collectCoverage:true,
-  "collectCoverageFrom": [
-    "src/**/*.service.ts",
-    "src/**/*.component.ts",
-    "src/**/*.directive.ts",
-    "src/**/*.actions.ts",
-    "src/**/*.reducer.ts",
-    "src/**/*.effects.ts",
-    "src/**/*.pipe.ts",
-    "src/**/*.validator.ts",
-    "src/**/*.guard.ts"
-  ],
+  // "collectCoverageFrom": [
+  //   "src/**/*.service.ts",
+  //   "src/**/*.component.ts",
+  //   "src/**/*.directive.ts",
+  //   "src/**/*.actions.ts",
+  //   "src/**/*.reducer.ts",
+  //   "src/**/*.effects.ts",
+  //   "src/**/*.pipe.ts",
+  //   "src/**/*.validator.ts",
+  //   "src/**/*.guard.ts"
+  // ],
 };
 
