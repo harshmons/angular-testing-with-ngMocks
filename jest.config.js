@@ -22,6 +22,7 @@ module.exports = {
   "collectCoverageFrom": [
     "src/**/*.service.ts",
     "src/**/*.component.ts",
+    "src/**/*.directive.ts",
     "src/**/*.actions.ts",
     "src/**/*.reducer.ts",
     "src/**/*.effects.ts",
