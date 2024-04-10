@@ -18,21 +18,14 @@ jobs:
       - name: Set projects
         id: projects
         run: |
-          echo "cart=true" >> "$GITHUB_OUTPUT"
-          echo "product=false" >> "$GITHUB_OUTPUT"
 
-      - name: Get color
-        env:
-          CART: ${{ steps.projects.outputs.cart }}
-          PRODUCT: ${{ steps.projects.outputs.product }}
-        run: |
-          if($AWARE)
+          if ( git diff master.. --name-only | xargs -L1 dirname | grep "app/cart" > /dev/null )
           then
-            echo "Aware Project should print"
+              echo "cart=true" >> "$GITHUB_OUTPUT"
           fi
-          if($FILTER)
+          if ( git diff master.. --name-only | xargs -L1 dirname | grep "app/product" > /dev/null )
           then
-            echo "Filter project should not print"
+              echo "product=false" >> "$GITHUB_OUTPUT"
           fi
 
       - name: "Checkout code"
