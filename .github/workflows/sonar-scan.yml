@@ -67,11 +67,11 @@ jobs:
         if: steps.projects.outputs.cart
         uses: sonarsource/sonarqube-scan-action@master
         with:
-        projectBaseDir: src/app/cart
-        args: >
-          -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
-          -Dsonar.verbose=true
-          -Dsonar.projectKey=angular-testing-with-ngmocks
+          projectBaseDir: src/app/cart
+          args: >
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+            -Dsonar.verbose=true
+            -Dsonar.projectKey=angular-testing-with-ngmocks
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
