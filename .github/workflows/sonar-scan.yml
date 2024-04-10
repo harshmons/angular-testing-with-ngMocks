@@ -30,7 +30,7 @@ jobs:
           then
             echo "Aware Project should print"
           fi
-          if
+          if($FILTER)
           then
             echo "Filter project should not print"
           fi
