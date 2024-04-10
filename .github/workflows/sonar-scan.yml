@@ -19,16 +19,21 @@ jobs:
         id: color-selector
         run: |
           echo "Aware=true" >> "$GITHUB_OUTPUT"
-          echo "Filter=true" >> "$GITHUB_OUTPUT"
+          echo "Filter=false" >> "$GITHUB_OUTPUT"
 
       - name: Get color
         env:
           AWARE: ${{ steps.color-selector.outputs.Aware }}
           FILTER: ${{ steps.color-selector.outputs.Filter }}
         run: |
-          echo "The aware project is $AWARE"
-          echo "The filter project is $FILTER"
-
+        if($AWARE)
+        then
+          echo "Aware Project should print"
+        fi
+        if
+        then
+          echo "Filter project should not print"
+        fi
 
       # - name: "Checkout code"
       #   uses: actions/checkout@v4
