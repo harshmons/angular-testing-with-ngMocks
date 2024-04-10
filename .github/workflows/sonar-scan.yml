@@ -64,7 +64,7 @@ jobs:
           npm test
 
       - name: SonarQube Scan for Cart
-        if: steps.projects.outputs.cart
+        if: steps.projects.outputs.cart == 'true'
         uses: sonarsource/sonarqube-scan-action@master
         with:
           # projectBaseDir: src/app/cart
@@ -79,7 +79,7 @@ jobs:
 
 
       - name: SonarQube Scan for Product
-        if: steps.projects.outputs.product
+        if: steps.projects.outputs.product == 'true'
         uses: sonarsource/sonarqube-scan-action@master
         with:
           args: >
