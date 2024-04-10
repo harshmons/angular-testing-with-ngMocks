@@ -17,15 +17,17 @@ jobs:
     steps:
       - name: Set projects
         id: color-selector
-        run: echo "Aware=true;Filter=false" >> "$GITHUB_OUTPUT"
+        run: |
+          echo "Aware=true" >> "$GITHUB_OUTPUT"
+          echo "Filter=true" >> "$GITHUB_OUTPUT"
 
       - name: Get color
         env:
-          Aware: ${{ steps.color-selector.outputs.Aware }}
-          Filter: ${{ steps.color-selector.outputs.Filter }}
+          AWARE: ${{ steps.color-selector.outputs.Aware }}
+          FILTER: ${{ steps.color-selector.outputs.Filter }}
         run: |
-          echo "The aware project is $Aware"
-          echo "The filter project is $Filter"
+          echo "The aware project is $AWARE"
+          echo "The filter project is $FILTER"
 
 
       # - name: "Checkout code"
