@@ -42,13 +42,13 @@ jobs:
       - name: Set projects
         id: projects
         run: |
-          if ( git diff $GITHUB_BASE_REF --name-only | grep "app/cart" > /dev/null )
+          if ( git diff origin/$GITHUB_BASE_REF --name-only | grep "app/cart" > /dev/null )
           then
             echo "cart=true" >> "$GITHUB_OUTPUT"
           else
             echo "cart=false" >> "$GITHUB_OUTPUT"
           fi
-          if ( git diff $GITHUB_BASE_REF --name-only | grep "app/product" > /dev/null )
+          if ( git diff origin/$GITHUB_BASE_REF --name-only | grep "app/product" > /dev/null )
           then
             echo "product=true" >> "$GITHUB_OUTPUT"
           else
