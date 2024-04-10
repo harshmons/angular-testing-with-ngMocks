@@ -26,14 +26,14 @@ jobs:
           AWARE: ${{ steps.color-selector.outputs.Aware }}
           FILTER: ${{ steps.color-selector.outputs.Filter }}
         run: |
-        if($AWARE)
-        then
-          echo "Aware Project should print"
-        fi
-        if
-        then
-          echo "Filter project should not print"
-        fi
+          if($AWARE)
+          then
+            echo "Aware Project should print"
+          fi
+          if
+          then
+            echo "Filter project should not print"
+          fi
 
       # - name: "Checkout code"
       #   uses: actions/checkout@v4
