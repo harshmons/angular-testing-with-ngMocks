@@ -46,7 +46,7 @@ jobs:
           echo "Target branch. : " $GITHUB_BASE_REF
           git --version
           git fetch --all
-          git diff $GITHUB_BASE_REF --name-only
+          git diff origin/$GITHUB_BASE_REF --name-only
           # if ( git diff $GITHUB_BASE_REF --name-only | grep "app/cart" > /dev/null )
           # then
           #     echo "cart=true" >> "$GITHUB_OUTPUT"
