@@ -67,17 +67,19 @@ jobs:
         if: steps.projects.outputs.cart
         uses: sonarsource/sonarqube-scan-action@master
         with:
-          projectBaseDir: src/app/cart
+          # projectBaseDir: src/app/cart
           args: >
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
             -Dsonar.verbose=true
             -Dsonar.projectKey=angular-testing-with-ngmocks
+            -Dsonar.sources=./src/app/cart
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
       # Check the Quality Gate status.
       - name: SonarQube Quality Gate check for Cart
+        if: steps.projects.outputs.cart
         id: sonarqube-quality-gate-check
         uses: sonarsource/sonarqube-quality-gate-action@master
         # Force to fail step after specific time.
