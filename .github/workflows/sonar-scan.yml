@@ -16,15 +16,15 @@ jobs:
 
     steps:
       - name: Set projects
-        id: color-selector
+        id: projects
         run: |
-          echo "Aware=true" >> "$GITHUB_OUTPUT"
-          echo "Filter=false" >> "$GITHUB_OUTPUT"
+          echo "cart=true" >> "$GITHUB_OUTPUT"
+          echo "product=false" >> "$GITHUB_OUTPUT"
 
       - name: Get color
         env:
-          AWARE: ${{ steps.color-selector.outputs.Aware }}
-          FILTER: ${{ steps.color-selector.outputs.Filter }}
+          CART: ${{ steps.projects.outputs.cart }}
+          PRODUCT: ${{ steps.projects.outputs.product }}
         run: |
           if($AWARE)
           then
@@ -35,51 +35,58 @@ jobs:
             echo "Filter project should not print"
           fi
 
-      # - name: "Checkout code"
-      #   uses: actions/checkout@v4
-      #   with:
-      #     # Disabling shallow clones is recommended for improving the relevancy of reporting
-      #     fetch-depth: 0
+      - name: "Checkout code"
+        uses: actions/checkout@v4
+        with:
+          # Disabling shallow clones is recommended for improving the relevancy of reporting
+          fetch-depth: 0
 
-      # - name: "Setup node env"
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: 14
+      - name: "Setup node env"
+        uses: actions/setup-node@v4
+        with:
+          node-version: 14
 
-      # - name: "Get node_modules cache"
-      #   uses: actions/cache@v4
-      #   id: node_modules_cache
-      #   with:
-      #     path: |
-      #       node_modules
-      #     key: ${{ runner.os }}-node-14-node_modules-${{ hashFiles('package-lock.json') }}
+      - name: "Get node_modules cache"
+        uses: actions/cache@v4
+        id: node_modules_cache
+        with:
+          path: |
+            node_modules
+          key: ${{ runner.os }}-node-14-node_modules-${{ hashFiles('package-lock.json') }}
 
-      # - name: "Install dependencies"
-      #   if: steps.node_modules_cache.outputs.cache-hit != 'true'
-      #   run: |
-      #     npm ci
+      - name: "Install dependencies"
+        if: steps.node_modules_cache.outputs.cache-hit != 'true'
+        run: |
+          npm ci
 
-      # - name: "Run unit test case"
-      #   run: |
-      #     npm test
+      - name: "Run unit test case"
+        run: |
+          npm test
 
-      # - name: SonarQube Scan
-      #   uses: sonarsource/sonarqube-scan-action@master
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      #     SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      - name: SonarQube Scan for Cart
+        if: steps.projects.outputs.cart
+        uses: sonarsource/sonarqube-scan-action@master
+        with:
+        projectBaseDir: src/app/cart
+        args: >
+          -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+          -Dsonar.verbose=true
+          -Dsonar.projectKey=angular-testing-with-ngmocks
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
-      # # Check the Quality Gate status.
-      # - name: SonarQube Quality Gate check
-      #   id: sonarqube-quality-gate-check
-      #   uses: sonarsource/sonarqube-quality-gate-action@master
-      #   # Force to fail step after specific time.
-      #   timeout-minutes: 5
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      #     SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} #OPTIONAL
+      # Check the Quality Gate status.
+      - name: SonarQube Quality Gate check for Cart
+        id: sonarqube-quality-gate-check
+        uses: sonarsource/sonarqube-quality-gate-action@master
+        # Force to fail step after specific time.
+        timeout-minutes: 5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} #OPTIONAL
 
-      # # Optionally you can use the output from the Quality Gate in another step.
-      # # The possible outputs of the `quality-gate-status` variable are `PASSED`, `WARN` or `FAILED`.
-      # - name: "Example show SonarQube Quality Gate Status value"
-      #   run: echo "The Quality Gate status is ${{ steps.sonarqube-quality-gate-check.outputs.quality-gate-status }}"
+      # Optionally you can use the output from the Quality Gate in another step.
+      # The possible outputs of the `quality-gate-status` variable are `PASSED`, `WARN` or `FAILED`.
+      - name: "Example show SonarQube Quality Gate Status value"
+        run: echo "The Quality Gate status is ${{ steps.sonarqube-quality-gate-check.outputs.quality-gate-status }}"
