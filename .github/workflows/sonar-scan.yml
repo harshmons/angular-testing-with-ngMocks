@@ -15,14 +15,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Set color
+      - name: Set projects
         id: color-selector
-        run: echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
+        run: echo "Aware=true;Filter=false" >> "$GITHUB_OUTPUT"
 
       - name: Get color
         env:
-          SELECTED_COLOR: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
-        run: echo "The selected color is $SELECTED_COLOR"
+          Aware: ${{ steps.color-selector.outputs.Aware }}
+          Filter: ${{ steps.color-selector.outputs.Filter }}
+        run: |
+          echo "The aware project is $Aware"
+          echo "The filter project is $Filter"
 
 
       # - name: "Checkout code"
