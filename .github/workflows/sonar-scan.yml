@@ -42,6 +42,8 @@ jobs:
       - name: Set projects
         id: projects
         run: |
+          echo "Current branch : " $GITHUB_HEAD_REF
+          echo "Target branch : " $GITHUB_REF
 
           if ( git diff $GITHUB_HEAD_REF $GITHUB_REF --name-only | grep "app/cart" > /dev/null )
           then
