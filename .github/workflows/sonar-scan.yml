@@ -15,19 +15,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Set projects
-        id: projects
-        run: |
-
-          if ( git diff master.. --name-only | xargs -L1 dirname | grep "app/cart" > /dev/null )
-          then
-              echo "cart=true" >> "$GITHUB_OUTPUT"
-          fi
-          if ( git diff master.. --name-only | xargs -L1 dirname | grep "app/product" > /dev/null )
-          then
-              echo "product=false" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: "Checkout code"
         uses: actions/checkout@v4
         with:
@@ -51,6 +38,19 @@ jobs:
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
         run: |
           npm ci
+
+      - name: Set projects
+        id: projects
+        run: |
+
+          if ( git diff master.. --name-only | xargs -L1 dirname | grep "app/cart" > /dev/null )
+          then
+              echo "cart=true" >> "$GITHUB_OUTPUT"
+          fi
+          if ( git diff master.. --name-only | xargs -L1 dirname | grep "app/product" > /dev/null )
+          then
+              echo "product=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: "Run unit test case"
         run: |
