@@ -46,14 +46,15 @@ jobs:
           echo "Target branch. : " $GITHUB_BASE_REF
           git --version
           git fetch --all
-          if ( git diff $GITHUB_BASE_REF --name-only | grep "app/cart" > /dev/null )
-          then
-              echo "cart=true" >> "$GITHUB_OUTPUT"
-          fi
-          if ( git diff $GITHUB_BASE_REF --name-only | grep "app/product" > /dev/null )
-          then
-              echo "product=false" >> "$GITHUB_OUTPUT"
-          fi
+          git diff $GITHUB_BASE_REF --name-only
+          # if ( git diff $GITHUB_BASE_REF --name-only | grep "app/cart" > /dev/null )
+          # then
+          #     echo "cart=true" >> "$GITHUB_OUTPUT"
+          # fi
+          # if ( git diff $GITHUB_BASE_REF --name-only | grep "app/product" > /dev/null )
+          # then
+          #     echo "product=false" >> "$GITHUB_OUTPUT"
+          # fi
 
       # - name: "Run unit test case"
       #   run: |
