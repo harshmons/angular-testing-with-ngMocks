@@ -8,7 +8,7 @@ on:
 
 jobs:
   lint:
-    name: "Run ESLint for linting code"
+    name: "Run unit testing"
     runs-on: ubuntu-latest
     # defaults:
     #   run:
