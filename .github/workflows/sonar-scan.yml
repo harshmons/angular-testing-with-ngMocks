@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - master
+      - master-copy
   pull_request:
       types: [opened, synchronize, reopened]
 
@@ -67,7 +68,7 @@ jobs:
           args: >
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
             -Dsonar.verbose=true
-            -Dsonar.projectKey=angular-testing-with-ngmocks
+            -Dsonar.projectKey=dummy-personal
             -Dsonar.sources=./src/app/cart
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -81,7 +82,7 @@ jobs:
           args: >
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
             -Dsonar.verbose=true
-            -Dsonar.projectKey=angular-testing-with-ngmocks
+            -Dsonar.projectKey=dummy-personal
             -Dsonar.sources=./src/app/product
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
