@@ -41,7 +41,12 @@ jobs:
 
       - name: Set projects
         id: projects
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
         run: |
+          echo "SONAR URL ---- $SONAR_HOST_URL"
+          echo "SONAR TOKEN ---- $SONAR_TOKEN"
           if ( git diff origin/$GITHUB_BASE_REF --name-only | grep "app/cart" > /dev/null )
           then
             echo "cart=true" >> "$GITHUB_OUTPUT"
