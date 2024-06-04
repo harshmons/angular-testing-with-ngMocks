@@ -71,7 +71,7 @@ jobs:
             -Dsonar.sources=./src/app/cart
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
 
 
       - name: SonarQube Scan for Product
