@@ -73,7 +73,7 @@ jobs:
           args: >
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
             -Dsonar.verbose=true
-            -Dsonar.projectKey=angular-testing-with-ngmocks-1
+            -Dsonar.projectKey=angular-testing-with-ngmocks-temp
             -Dsonar.sources=./src/app/cart
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
