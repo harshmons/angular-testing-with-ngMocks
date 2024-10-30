@@ -41,7 +41,7 @@
     "@angular/compiler-cli": "~13.3.0",
     "@briebug/jest-schematic": "^4.0.0",
     "@compodoc/compodoc": "^1.1.23",
-    "@schematics/angular": "^15.0.2",
+    "@schematics/angular": "^18.2.10",
     "@types/jest": "^29.5.12",
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "5.27.1",
