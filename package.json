@@ -43,7 +43,7 @@
     "@compodoc/compodoc": "^1.1.23",
     "@schematics/angular": "^15.0.2",
     "@types/jest": "^29.5.12",
-    "@types/node": "^12.11.1",
+    "@types/node": "^22.8.5",
     "@typescript-eslint/eslint-plugin": "5.27.1",
     "@typescript-eslint/parser": "5.27.1",
     "babel-jest": "^29.7.0",
