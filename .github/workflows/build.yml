@@ -19,7 +19,7 @@ jobs:
     name: "Builing code"
     runs-on: ubuntu-latest
     env:
-      SLACK_WEBHOOK_URL:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     defaults:
       run:
         working-directory: ang
