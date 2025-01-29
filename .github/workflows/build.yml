@@ -29,5 +29,5 @@ jobs:
           method: chat.postMessage
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            channel: 'slack-integration-poc'
+            channel: ${{ secrets.SLACK_CHANNEL_ID }}
             text: "howdy <@channel>!"
