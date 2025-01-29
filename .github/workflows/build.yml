@@ -28,7 +28,7 @@ jobs:
       - name: "Slack Notification"
         uses: act10ns/slack@v2
         with:
-          status: 'Test status'
-          steps: 'Test steps'
+          status: ${{ job.status }}
+          steps: ${{ toJson(steps) }}
           channel: '#slack-integration-poc'
         if: always()
