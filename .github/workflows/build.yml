@@ -26,9 +26,8 @@ jobs:
       - name: "Slack Notification"
         uses: slackapi/slack-github-action@v2.0.0
         with:
-          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
-          webhook-type: webhook-trigger
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            status: "${{ job.status }}"
-            option: "false"
-            channel: "slack-integration-poc"
+          channel: 'slack-integration-poc'
+          text: "howdy <@channel>!"
