@@ -31,3 +31,4 @@ jobs:
           payload: |
             status: "${{ job.status }}"
             option: "false"
+            channel: "slack-integration-poc"
