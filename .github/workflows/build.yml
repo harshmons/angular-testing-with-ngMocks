@@ -18,17 +18,15 @@ jobs:
   lint:
     name: "Builing code"
     runs-on: ubuntu-latest
-    env:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     defaults:
       run:
         working-directory: ang
 
     steps:
       - name: "Slack Notification"
-        uses: act10ns/slack@v2
+        uses: slackapi/slack-github-action@v2.0.0
         with:
-          status: test
-          message: Starting Docker Build and Push...
-          channel: '#slack-integration-poc'
-        if: always()
+          payload-delimiter: "_"
+          payload-file-path: "./.eslintrc.json"
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: webhook-trigger
