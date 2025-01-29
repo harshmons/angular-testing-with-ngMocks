@@ -1,0 +1,34 @@
+# Workflow for - Validating all the code using ESLint
+# Triggered when -
+# 1 - Pull Request opened against "sprint-master" or "package-**" branch
+# 2 - Any push on "sprint-master" or "package-**" branch
+# This workflow also has caching ability which means node_modules will only get installed whenever there is a change in package-lock.json file
+# which helps in faster excecution of workflow even this cached node_modules can be shared acorss all other workflows triggered for same branches
+# For more detail on caching, read here - https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows#restrictions-for-accessing-a-cache
+
+name: build
+
+on:
+  pull_request:
+    branches:
+      - 'master'
+
+
+jobs:
+  lint:
+    name: "Builing code"
+    runs-on: ubuntu-latest
+    env:
+      SLACK_WEBHOOK_URL:
+    defaults:
+      run:
+        working-directory: ang
+
+    steps:
+      - name: "Slack Notification"
+        uses: actions/slack@v1
+        with:
+          status: 'Test status'
+          steps: 'Test steps'
+          channel: '#slack-integration-poc'
+        if: always()
