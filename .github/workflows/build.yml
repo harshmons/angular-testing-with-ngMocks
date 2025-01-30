@@ -42,7 +42,7 @@ jobs:
                 fields:
                   - type: "mrkdwn"
                     text: |
-                      "| Class Name    | Purpose |
+                       | Class Name    | Purpose |
                        | :-----------: | :------ |
                        | s-header-bd   | For Bold Header text |
                        | s-header-rg   | For Regular Header text |
@@ -52,4 +52,4 @@ jobs:
                        | s-title-lg    | For Large Title text |
                        | s-title-md    | For Medium Title text |
                        | s-title-sm    | For Small Title text |
-                       | s-title-xs    | For Extra Small Title text |"
+                       | s-title-xs    | For Extra Small Title text |
