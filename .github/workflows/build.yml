@@ -41,7 +41,8 @@ jobs:
               - type: "section"
                 fields:
                   - type: "mrkdwn"
-                    text: ```
+                    text: |
+                      ```
                       | Class Name    | Purpose |
                       | :-----------: | :------ |
                       | s-header-bd   | For Bold Header text |
