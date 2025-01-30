@@ -46,4 +46,4 @@ jobs:
               - type: "section"
                 fields:
                   - type: "mrkdwn"
-                    text: "For Extra Small Title text2 "
+                    text: "*Status : * ${{ job.status }} "
