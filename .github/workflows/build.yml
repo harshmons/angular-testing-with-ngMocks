@@ -42,14 +42,14 @@ jobs:
                 fields:
                   - type: "mrkdwn"
                     text: |
-                       | Class Name    | Purpose |
-                       | :-----------: | :------ |
-                       | s-header-bd   | For Bold Header text |
-                       | s-header-rg   | For Regular Header text |
-                       | s-body-lg     | For Large Body text |
-                       | s-body-md     | For Medium Body text |
-                       | s-body-sm     | For Small Body text |
-                       | s-title-lg    | For Large Title text |
-                       | s-title-md    | For Medium Title text |
-                       | s-title-sm    | For Small Title text |
-                       | s-title-xs    | For Extra Small Title text |
+                      | Class Name    | Purpose |
+                      | :-----------: | :------ |
+                      | s-header-bd   | For Bold Header text |
+                      | s-header-rg   | For Regular Header text |
+                      | s-body-lg     | For Large Body text |
+                      | s-body-md     | For Medium Body text |
+                      | s-body-sm     | For Small Body text |
+                      | s-title-lg    | For Large Title text |
+                      | s-title-md    | For Medium Title text |
+                      | s-title-sm    | For Small Title text |
+                      | s-title-xs    | For Extra Small Title text |
