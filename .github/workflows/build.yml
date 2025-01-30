@@ -41,7 +41,7 @@ jobs:
               - type: "section"
                 fields:
                   - type: "mrkdwn"
-                    text: |
+                    text: ```
                       | Class Name    | Purpose |
                       | :-----------: | :------ |
                       | s-header-bd   | For Bold Header text |
@@ -53,3 +53,4 @@ jobs:
                       | s-title-md    | For Medium Title text |
                       | s-title-sm    | For Small Title text |
                       | s-title-xs    | For Extra Small Title text |
+                      ```
